@@ -1,6 +1,7 @@
 * HTML5
 
-  * [Html5新特性](HTML5/html.md)
+  * [Html5新特性](HTML5/new.md)
+  * [Html](HTML5/html.md)
 
 * CSS3
 
