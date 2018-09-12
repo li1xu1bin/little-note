@@ -13,7 +13,6 @@
   * [JS基础](JS/basic.md)
   * [原型链](JS/prototype.md)
   * [DOM&BOM](JS/dom.md)
-  * [原型链](JS/prototype.md)
 
 * ES6
   * [ES6新标准](ES6/new.md)
