@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>前端小笔记</title>
@@ -8,6 +9,7 @@
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <link rel="stylesheet" href="vue.css">
 </head>
+
 <body>
   <div id="app"></div>
   <script>
@@ -16,8 +18,19 @@
       repo: '',
       loadSidebar: true,
       subMaxLevel: 2,
+      // 完整配置参数
+
+      search: {
+        noData: '无结果',
+        paths: 'auto',
+        placeholder: '搜索',
+      },
+      
     }
   </script>
   <script src="docsify.min.js"></script>
+  <script src="//unpkg.com/docsify/lib/plugins/search.js"></script>
+
 </body>
+
 </html>
