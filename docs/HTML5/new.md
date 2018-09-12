@@ -16,6 +16,9 @@
   `<video>`  视频    
   `<audio>`  音频    
 
+## 表单增强
+  新的表单控件：calendar 、date 、time 、email 、url 、search 
+
 ## 本地存储
   `localStorage`  持久存储数据，浏览器关闭不删除，只能主动删除，用于实现标签间通信    
   `sessionStorage`  数据在当前浏览器窗口关闭后自动删除  
@@ -29,3 +32,6 @@
   `cookie`  可设置过期时间，大小不超过4k  
 
 ## Canvas
+
+## 离线存储
+离线，通过创建 cache manifest 文件，创建应用程序缓存

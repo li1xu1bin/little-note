@@ -36,23 +36,6 @@ rem/viewport/media  query
 .col-lg-
   ```
   
-## 效果属性（box-shadow、border-radius、background、clip-path）
-### box-shadow
-
-  1、营造层次感（立体感）  
-  2、充当没有宽度的边框    
-  3、 特殊效果  
-	
-### background
-  1、纹理/图案  
-  2、渐变    
-  3、 雪碧图动画  
-  4、背景图尺寸适应  
-    
-### clip-path
-  1、对容器进行裁剪  
-  2、常见几何图形   
-  3、自定义路径  
 
 
 ##  Canvas和svg
@@ -71,21 +54,6 @@ rem/viewport/media  query
   4、 支持事件处理器。SVG绘制出的每个图形元素都是独立的DOM节点，能够方便的绑定事件  
   5、 适合静态图片展示，高保真文档查看和打印的应用场景，不适合游戏应用）  
   6、 如果对象属性发生变化，浏览器能自动重现图形。也就是说，SVG绘图很容易编辑，只需要增加或移除相应的元素即可  
- 
-## 浏览器内核 
-### Trident内核(IE内核)
-代表作品是IE，因IE捆绑在Windows中，所以占有极高的份额，又称为IE内核或MSHTML，此内核只能用于Windows平台，且不是开源的。
-代表作品还有腾讯、Maxthon（遨游）、360浏览器等。但由于市场份额比较大，曾经出现脱离了W3C标准的时候，同时IE版本比较多，
-存在很多的兼容性问题
-### Gecko(Firefox内核)
-代表作品是Firefox，即火狐浏览器。因火狐是最多的用户，故常被称为firefox内核它是开源的，最大优势是跨平台，在Microsoft Windows、Linux、MacOs X等主   要操作系统中使用
-### Webkit内核(Safari内核,Chrome内核原型,开源)
-它是苹果公司自己的内核，也是苹果的Safari浏览器使用的内核
-### Presto内核
-表作品是Opera，Presto是由Opera Software开发的浏览器排版引擎，它是世界公认最快的渲染速度的引擎。在13年之后，Opera宣布加入谷歌阵营，弃用了    Presto
-### Blink内核
-由Google和Opera Software开发的浏览器排版引擎，2013年4月发布。现在Chrome内核是Blink。谷歌还开发了自己的JS引擎，V8，使JS运行速度极大地提高了
-
 
 ## css动画
 

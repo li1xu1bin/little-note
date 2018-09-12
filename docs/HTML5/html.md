@@ -1,30 +1,5 @@
 
 
-## 按默认分类
-
-  1、块级元素`block`  
-  2、行内`inline`  
-  3、行内块元素 `inline-block`  
-
-## 块级元素block
-
-  1. 元素自己独占一行显示（块级元素有默认宽度)  
-  2. 可以设置宽度和高度 
-  3. 当两个块级元素发生嵌套关系的时候，子元素如果没有设置宽度，那么该子元素的宽度与父元素的宽度一致。
-  4. 代表:  div , h1 , p , ul , li...  
-
-## 行内元素inline
-
-  1. 元素自己独占一行显示（块级元素有默认宽度)  
-  2. 行内元素不能直接设置宽度和高度
-  3. 元素的宽和高就是内容撑开的宽高 
-  4. 代表：  span , a , strong , b , i , s , font... 
-  
-## 行内块元素 inline-block
-
-  1. 所有元素都在一行上显示
-  2. 可以设置宽度和高度
-  3. 代表：  <img> , input....
   
 ## 语义化的意义
 
@@ -42,39 +17,11 @@
   2. XHML属于XML,是Html进行XML严格化的结果
   3. HTML5简单点理解成：h5≈ html+CSS 3+js+API，减少对外部插件的需求（比如 Flash），更优秀的错误处理，更多取代脚本的标记
 
-## HTML5新特性
-
-  1. 新的语义化元素：article 、footer 、header 、nav 、section 
-  2. 表单增强，新的表单控件：calendar 、date 、time 、email 、url 、search 
-  3. 新的API：音频(用于媒介回放的video和audio元素)、图形（绘图canvas元素）
-  4. 新的API：离线，通过创建 cache manifest 文件，创建应用程序缓存
-  5. 新的API：本地存储，localStorage-没有时间限制的数据存储，sessionStorage-session数据存储（关闭浏览器窗口数据删除）
-  4. 新的API：实时通讯，设备能力 
-
-
 ## Doctype 
 
   1、document type definiton 文档类型定义是一系列的语法规则，用来定义xml和html的文件类型  
   2、浏览器用它来判断文档类型，决定使用何种协议辣子解析，以及切换浏览器模式
 
-  
-## 盒模型
-
-  1. 盒模型的组成大家肯定都懂，由里向外content,padding,border,margin.  
-  2.盒模型是有两种标准的，一个是标准模型，一个是IE模型
-    
-## 标准模型
-
-在标准模型中，盒模型的宽高只是内容（content）的宽高  
-
-## IE模型
-
-盒模型的宽高是内容(content)+填充(padding)+边框(border)的总宽高  
-
-## css如何设置两种模型
-
-  1、标准模型 box-sizing:content-box; 
-  2、IE模型 box-sizing:border-box;
   
 ## JS获取宽高如何获取盒模型对应的宽高
   1、dom.style.width/height  
@@ -181,23 +128,3 @@ position 用于网页元素的定位，可设置 `static/relative/absolute/fixed
   3、兼容性的差别。由于@import是CSS2.1提出的所以老的浏览器不支持，@import只有在IE5以上的才能识别，而link标签无此问题    
   4、使用dom控制样式时的差别。当使用javascript控制dom去改变样式的时候，只能使用link标签，因为@import不是dom可以控制的    
   
-## px
-PX实际上就是像素，用PX设置字体大小时，比较稳定和精确。但是这种方法存在一个问题，当用户在浏览器中浏览我们制作的Web页面时，如果改变了浏览器的缩放，这时会使用我们的Web页面布局被打破。这样对于那些关心自己网站可用性的用户来说，就是一个大问题了。因此，这时就提出了使用“em”来定义Web页面的字体。
-
-## em
-EM就是根据基准来缩放字体的大小。EM实质是一个相对值，而非具体的数值。这种技术需要一个参考点，一般都是以<body>的“font-size”为基准。如WordPress官方主题Twenntytwelve的基准就是14px=1em
-
-## rem
-REM是相对于其父元素来设置字体大小的，这样就会存在一个问题，进行任何元素设置，都有可能需要知道他父元素的大小。而Rem是相对于根元素<html>，这样就意味着，我们只需要在根元素确定一个参考值
-
-## px em rem浏览器的兼容性
-
-除了IE6-IE8r，其它的浏览器都支持em和rem属性，px是所有浏览器都支持。
-因此为了浏览器的兼容性，可“px”和“rem”一起使用，用"px"来实现IE6-8下的效果，然后使用“Rem”来实现代浏览器的效果
-
-## form的作用
-  1、直接提交表单
-  2、使用submit/reset按钮  
-  3、 便于浏览器保持表单
-  4、第三方库可以整体提取值
-  5、第三方库可以进行表单验证
