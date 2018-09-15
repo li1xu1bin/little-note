@@ -1,3 +1,6 @@
+## CSS选择器优先级
+权重可以叠加  
+权重：`!important` > 行内样式 > `id` > `class` > tag
 
 
 ## :focus-within

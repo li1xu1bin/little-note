@@ -18,7 +18,11 @@
   1. 内联块元素都在同一行显示
   2. 可以设置宽度和高度
   3. `vertical-align`属性会影响内联块 
-  3. 代表：input....
+  4. 代表：input....
+
+## 空元素
+  
+  代表：br hr
 
 ### 推荐网站
 [学习css布局](http://zh.learnlayout.com/)  
