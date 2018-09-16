@@ -44,33 +44,32 @@
   2、导致这一现象的最根本原因在于：被设置了 float 的元素会脱离文档流，我们的浮动是左右浮动，所以我们的块级元素都是左右排列。其根本原因在于 float 的设计初衷是解决文字环绕图片的问题    
   3、包裹性也是 float 的一个非常重要的特性，普通的 div 如果没有设置宽度，它会撑满整个屏幕，在之前的盒子模型那一节也讲到过。而如果给 div 增加float:left之后，它突然变得紧凑了，宽度发生了变化，把内容中的三个字包裹了——这就是包裹性。为 div 设置了 float 之后，其宽度会自动调整为包裹住内容宽度，而不是撑满整个父容器  清空格，对于高度不同的容器，float 排版出来的网页严丝合缝，
 
-## 清除浮动（clear）
+## 清除浮动
+1.添加空div，{clear:both;height:0;overflow:hidden;}  
+2.给父级添加 `overflow:hidden`  
+3.`after`伪类清除浮动  
 
-  1、额外添加标签，再最后一个浮动的盒子的后面，新添加一个标签。然后他可以清除浮动  
-  2、`Overflow` 清除浮动，是浮动的大盒子（父级标签）再样式里面加: `overflow:hidden`，  常用的`ul` `li`，在`ul`里添加`overflow：hidden`  
-  3、`After`伪类清除浮动  
-  4、写一个通用的`clearfix`类，直接在需要清除浮动的地方加一个这个样式 ：`<div class="box clearfix">` 
-  5、`After before`伪类清除浮动 是大部分大型网站常用的，比如新浪 淘宝 的清除浮动的效果  
-```html
-	.clearfix:before,.clearfix:after{  
-		content:"";  
-		display:table;  
-		}  
-		.clearfix:after{  
-		clear:both;  
-		}  
-		.clearfix{ /*照顾ie6*/  
-		zoom:1;  
-		}  
-		使用：  
-		<div class="box clearfix"> 
-		
+```css
+.float_div:after{
+	content:".";
+	clear:both;
+	display:block;
+	height:0;
+	overflow:hidden;
+	visibility:hidden;
+}
 ```
+4.写一个通用的`clearfix`类，直接在需要清除浮动的地方加这个类 ：
 
-## 定位position
-position 用于网页元素的定位，可设置 `static/relative/absolute/fixed /inherit ` 
-
-  1、static 默认  
-  2、relative，会导致自身位置的相对变化，而不会影响其他元素的位置、大小  
-  3、absolute 元素脱离了文档结构，导致父元素坍塌，元素具有“包裹性，元素会悬浮在页面上方，会遮挡住下方的页面内容，设置了 top、left 值时，   元素是相对于最近的定位上下文来定位的，而不是相对于浏览器定位。  
-  4、fixed 元素脱离了文档结构，根据 window （或者 iframe）确定位置
+```css
+.clearfix:before,.clearfix:after{  
+  content:"";  
+  display:table;  
+}  
+.clearfix:after{  
+  clear:both;  
+}  
+.clearfix{ /*照顾ie6*/  
+  zoom:1;  
+}  
+```

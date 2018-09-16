@@ -95,6 +95,23 @@ property可以是transform，margin，width，left，opacity...
     100% {top:200px;}
   }
 ```
+## 滤镜
+
+` filter: none | <filter-function > [ <filter-function>`  
+filter-function一个具有以下值可选：
+grayscale灰度
+sepia褐色
+saturate饱和度
+hue-rotate色相旋转
+invert反色
+opacity透明度
+brightness亮度
+contrast对比度
+blur模糊
+drop-shadow阴影
+
+[属性详解](http://www.w3cplus.com/css3/ten-effects-with-css3-filter)  
+
 
 ## 工具
 

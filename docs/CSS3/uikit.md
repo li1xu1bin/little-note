@@ -5,11 +5,13 @@
 
 [Layui](https://www.layui.com/) 经典模块化前端框架
  
-[Element](http://element-cn.eleme.io/#/zh-CN) 基于 Vue 2.0 的桌面端组件库
+[Element](http://element-cn.eleme.io/#/zh-CN) 基于Vue2的桌面端组件库
 
 [LuLu UI](https://l-ui.com/content/about/design.html) 无障碍用户体验 
 
 [Ant Design](https://ant.design/index-cn) 蚂蚁金服组件库  
+
+[Bulma](https://bulma.io/) 基于Flexbox的UI框架  
 
 
 
