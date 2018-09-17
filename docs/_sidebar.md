@@ -8,7 +8,6 @@
   * [盒子模型](CSS3/box.md)
   * [布局大全](CSS3/layout.md)
   * [绘画动画](CSS3/ui.md)
-  * [BFC](CSS3/bfc.md)
   * [常识](CSS3/css.md)
   * [UI KIT](CSS3/uikit.md)
 
