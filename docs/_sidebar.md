@@ -8,13 +8,14 @@
   * [盒子模型](CSS3/box.md)
   * [布局大全](CSS3/layout.md)
   * [绘画动画](CSS3/ui.md)
-  * [常识](CSS3/css.md)
+  * [技巧](CSS3/css.md)
   * [UI KIT](CSS3/uikit.md)
 
 * JavaScript
   * [JS基础](JS/basic.md)
   * [原型链](JS/prototype.md)
   * [DOM&BOM](JS/dom.md)
+  * [习题](JS/quiz.md)
 
 * ES6
   * [ES6新标准](ES6/new.md)

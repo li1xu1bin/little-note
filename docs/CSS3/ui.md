@@ -112,6 +112,11 @@ drop-shadow阴影
 
 [属性详解](http://www.w3cplus.com/css3/ten-effects-with-css3-filter)  
 
+## SVG
+
+[使用 Snap.svg 制作动画](https://aotu.io/notes/2017/01/22/snapsvg/?o2src=juejin&o2layout=compat)  
+
+[SVG 动画精髓](https://www.villainhr.com/page/2017/05/01/SVG%20%E5%8A%A8%E7%94%BB%E7%B2%BE%E9%AB%93?utm_source=tuicool&utm_medium=referral)  
 
 ## 工具
 
@@ -128,3 +133,5 @@ drop-shadow阴影
 [CSS滤镜](https://www.cssfilters.co/)  
 
 [加载动画制作](https://loading.io/)  
+
+[JS动画库](https://www.uisdc.com/75-web-animation-tools-1)  
