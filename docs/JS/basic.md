@@ -42,6 +42,36 @@ console.log(typeof d);//function
 console.log([1, 2] instanceof Array) // true
   ```
 
+## 类型转换
+
+### 字符串转换成整型数组
+
+```js
+var dataStr="1,2,3,4,5";//原始字符串
+var dataStrArr=dataStr.split(",");//分割成字符串数组
+var dataIntArr=[];//保存转换后的整型字符串
+ 
+//方法一
+dataStrArr.forEach(function(data,index,arr){
+	dataIntArr.push(+data);//加号转整型
+});
+console.log(dataIntArr);
+ 
+//方法二
+dataIntArr=dataStrArr.map(function(data){
+	return +data;
+});
+console.log(dataIntArr);
+```
+
+### 数组转换成字符串
+
+```js
+var arr = ["aa","bb","cc"];
+var stra = arr.toString(); //"aa,bb,cc"
+var strb = arr.join(":"); //"aa:bb:cc"
+```
+
 ## 对象
 
 #### 对象的定义
