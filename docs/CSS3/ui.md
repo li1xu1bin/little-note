@@ -5,8 +5,6 @@
 
 [圆角八个值演示](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Background_and_Borders/Border-radius_generator)  
 
-[可视化演示](https://9elements.github.io/fancy-border-radius/)  
-
 ```css
   border-radius : 50px;
   //完整写法如下
