@@ -28,3 +28,21 @@
 `maximum-scale`：允许用户缩放到的最大比例。  
 `minimum-scale`：允许用户缩放到的最小比例。  
 `user-scalable`：用户是否可以手动缩放。  
+
+## H5幻灯片
+
+[fullpage](https://github.com/kisnows/fullpage) 
+
+[移动端开发](https://github.com/jtyjty99999/mobileTech) 
+
+[H5单页面手势滑屏切换原理](http://www.cnblogs.com/onepixel/p/5300445.html)  
+
+## 工程化
+
+
+[git - 简明指南](http://www.runoob.com/manual/git-guide/)  
+
+[30分钟学会使用grunt打包前端代码](http://www.cnblogs.com/yexiaochai/p/3603389.html) 
+
+[Chrome 开发者工具](http://www.css88.com/doc/chrome-devtools/) 
+

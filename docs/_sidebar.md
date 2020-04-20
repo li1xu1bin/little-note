@@ -13,6 +13,7 @@
 
 * JavaScript
   * [JS基础](JS/basic.md)
+  * [面向对象](JS/object.md)
   * [原型链](JS/prototype.md)
   * [DOM&BOM](JS/dom.md)
   * [习题](JS/quiz.md)
@@ -21,8 +22,10 @@
   * [ES6新标准](ES6/new.md)
 
 * Vue
-  * [待补充](Vue/no.md)
+  * [MVVM](Vue/mvvm.md)
+  * [生命周期](Vue/lifecycle.md)
 
 * Web相关
   * [HTTP](WEB/http.md)
   * [跨域](WEB/jsonp.md)
+  * [存储](WEB/cookie.md)
