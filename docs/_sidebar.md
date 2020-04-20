@@ -8,7 +8,7 @@
   * [盒子模型](CSS3/box.md)
   * [布局大全](CSS3/layout.md)
   * [绘画动画](CSS3/ui.md)
-  * [技巧](CSS3/css.md)
+  * [常识](CSS3/css.md)
   * [UI KIT](CSS3/uikit.md)
 
 * JavaScript
@@ -24,6 +24,9 @@
 * Vue
   * [MVVM](Vue/mvvm.md)
   * [生命周期](Vue/lifecycle.md)
+
+* React
+  * [待补充](React/no.md)
 
 * Web相关
   * [HTTP](WEB/http.md)
