@@ -22,8 +22,8 @@
   * [ES6新标准](ES6/new.md)
 
 * Vue
-  * [MVVM](Vue/mvvm.md)
-  * [生命周期](Vue/lifecycle.md)
+  * [基础知识](Vue/mvvm.md)
+  * [路由](Vue/router.md)
 
 * Web相关
   * [HTTP](WEB/http.md)

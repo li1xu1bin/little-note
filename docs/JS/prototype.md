@@ -1,81 +1,40 @@
-
-
-#### 对JavaScript原型的理解
-    1、所有的引用类型（数组、对象、函数），都具有对象特性，即可自由扩展属性（null除外）
-    2、所有的引用类型（数组、对象、函数），都有一个__proto__属性（隐式原型），属性值是一个普通的对象  
-    3、所有的函数，都有一个prototype属性，属性值也是一个普通的对象
-	  4、所有的引用类型（数组、对象、函数），__proto__属性值指向它的构造函数的prototype属性值
+### 原型
+1、每个对象（除了null），都有一个_ _proto_ _属性，指向原型对象  
+2、每个函数，都有一个 prototype 属性，即原型对象  
+3、所有的原型对象都是 Object 的实例，所以 _proto_都指向 Object （构造函数）的原型对象。而 Object 构造函数的_ _proto_ _ 指向 null（停止查找）
 	
-通过代码解释一下，看结果。  
-  
   ```js
-  // 要点一：自由扩展属性
-	var obj = {}; obj.a = 100;
-	var arr = []; arr.a = 100;
-	function fn () {}
-	fn.a = 100;
+  function Person() {
+  }
+  var person = new Person();
 
-	// 要点二：__proto__
-	console.log(obj.__proto__);
-	console.log(arr.__proto__);
-	console.log(fn.__proto__);
-
-	// 要点三：函数有 prototype
-	console.log(fn.prototype)
-
-	// 要点四：引用类型的 __proto__ 属性值指向它的构造函数的 prototype 属性值
-	console.log(obj.__proto__ === Object.prototype)
+  console.log(person.__proto__ === Person.prototype); // true
+  console.log(Person.prototype.__proto__ === Object.prototype); // true
+  console.log(Object.prototype.__proto__ === null); // true
 
   ```
-  
-#### 原型
+### constructor属性
+
+原型对象上的一个指向构造函数的属性。
+
   ```js
-  // 构造函数
-function Foo(name, age) {
-    this.name = name
-}
-Foo.prototype.alertName = function () {
-    alert(this.name)
-}
-// 创建示例
-var f = new Foo('zhangsan')
-f.printName = function () {
-    console.log(this.name)
-}
-// 测试
-f.printName()
-f.alertName()
-  ```
-&emsp;&emsp;执行printName时很好理解，但是执行alertName时发生了什么？这里再记住一个重点 当试图得到一个对象的某个属性时，如果这个对象本身没有这个属性，那么会去它的`__proto__`（即它的构造函数的prototype）中寻找，因此f.alertName就会找到Foo.prototype.alertName  
-&emsp;&emsp;那么如何判断这个属性是不是对象本身的属性呢？使用hasOwnProperty，常用的地方是遍历一个对象的时候.
-  ```
-var item
-for (item in f) {
-    // 高级浏览器已经在 for in 中屏蔽了来自原型的属性，但是这里建议大家还是加上这个判断，保证程序的健壮性
-    if (f.hasOwnProperty(item)) {
-        console.log(item)
-    }
-}
-  ```
-#### 原型链
-  ```
-f.printName()
-f.alertName()
-f.toString()
-  ```
-&emsp;&emsp;因为f本身没有toString()，并且`f.__proto__`（即Foo.prototype）中也没有toString。这个问题还是得拿出刚才那句话——当试图得到一个对象的某个属性时，如果这个对象本身没有这个属性，那么会去它的`__proto__`（即它的构造函数的prototype）中寻找。  
-&emsp;&emsp;如果在`f.__proto__`中没有找到toString，那么就继续去`f.__proto__.__proto__`中寻找，因为`f.__proto__`就是一个普通的对象而已嘛！
+  console.log(person.constructor === Person); // true
+  console.log(person.constructor === Person.prototype.constructor); // true
 
-    1、f.__proto__即Foo.prototype，没有找到toString，继续往上找
-    2、f.__proto__.__proto__即Foo.prototype.__proto__。Foo.prototype就是一个普通的对象，因此Foo.prototype.__proto__就是Object.prototype，在这里可以找到toString
-    3、因此f.toString最终对应到了Object.prototype.toString
-	
-&emsp;&emsp;这样一直往上找，你会发现是一个链式的结构，所以叫做“原型链”。如果一直找到最上层都没有找到，那么就宣告失败，返回undefined。最上层是什么 —— `Object.prototype.__proto__ === null`  
+  ```
+### 原型链
+原型链：原型链就是多个对象通过 __proto__ 的方式连接了起来。
+instanceof 的原理是通过判断该对象的原型链中是否可以找到该构造类型的 prototype 类型。
+ 
+ ```js
+ var A = function(){};
+ var a = new A();
+ console.log(a.__proto__); //Object {}（即构造器function A 的原型对象）
+ console.log(a.__proto__.__proto__); //Object {}（即构造器function Object 的原型对象）
+ console.log(a.__proto__.__proto__.__proto__); //null
+  ```
 
-#### 原型链中的this
-&emsp;&emsp;所有从原型或更高级原型中得到、执行的方法，其中的this在执行时，就指向了当前这个触发事件执行的对象。因此printName和alertName中的this都是f。  
-
-#### 继承（本质为原型）
+### 继承（本质为原型）
 既然要实现继承，那么首先我们得有一个父类
   ```
 // 定义一个动物类
@@ -92,12 +51,14 @@ Animal.prototype.eat = function(food) {
   console.log(this.name + '正在吃：' + food);
 };
   ```
-#### 继承的实现方式：  
+
+
+### 继承的实现方式：  
 #####  1、原型链继承
 核心： 将父类的实例作为子类的原型  
   ```
 function Cat(){ 
- }
+}
 Cat.prototype = new Animal();
 Cat.prototype.name = 'cat';
 
@@ -124,7 +85,7 @@ console.log(cat instanceof Cat); //true
 #####  2、构造继承
  核心：使用父类的构造函数来增强子类实例，等于是复制父类的实例属性给子类（没用到原型）  
  ```
- function Cat(name){
+function Cat(name){
   Animal.call(this);
   this.name = name || 'Tom';
 }
