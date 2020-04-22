@@ -73,8 +73,8 @@ reverse()反转顺序
 
 slice(起始位置，结束位置) 返回一个新数组
 
-splice(位置，数量，项目) 改变原数组
+splice(index，len，item) 改变原数组
 
-index:数组开始下标
-len: 替换/删除的长度
+index:数组开始下标  
+len: 替换/删除的长度  
 item:替换的值，删除操作的话 item为空

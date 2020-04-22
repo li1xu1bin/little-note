@@ -5,7 +5,7 @@
  BOM（浏览器对象模型）是浏览器本身的一些信息的设置和获取，例如获取浏览器的宽度、高度，设置让浏览器跳转到哪个地址
   
     1、navigator
-    2、 screen 
+    2、screen 
     3、location
     4、history
 > 获取浏览器特性（即俗称的UA）然后识别客户端，例如判断是不是 Chrome 浏览器   
@@ -100,7 +100,7 @@ p.setAttribute('style', 'font-size:30px;')
   ```js
   
   
-  var div1 = document.getElementById('div1')
+var div1 = document.getElementById('div1')
 
 // 添加新节点
 var p1 = document.createElement('p')
@@ -187,7 +187,7 @@ bindEvent(a, 'click', function(e) {
  对于以上 HTML 代码结构，要求点击p1时候进入激活状态，点击其他任何<p>都取消激活状态，如何实现？代码如下，注意看注释：
      
    ```js
-	 var body = document.body
+var body = document.body
 bindEvent(body, 'click', function (e) {
     // 所有 p 的点击都会冒泡到 body 上，因为 DOM 结构中 body 是 p 的上级节点，事件会沿着 DOM 树向上冒泡
     alert('取消')
@@ -201,7 +201,7 @@ bindEvent(p1, 'click', function (e) {
      ``` 
 如果我们在p1 div1 body中都绑定了事件，它是会根据 DOM 的结构来冒泡，从下到上挨个执行的。但是我们使用`e.stopPropagation()`就可以阻止冒泡 
 
-## 事件代理
+## 事件代理/委托
  我们设定一种场景，如下代码，一个`<div>`中包含了若干个`<a>`，而且还能继续增加。那如何快捷方便地为所有`<a>`绑定事件呢？  
    ```js
  <div id="div1">
@@ -281,7 +281,7 @@ span.addEventListener("click",function(){
 
 5、 event.target 而target是事件的真正触发者  
 
-6.自定义事件
+6、 自定义事件
 
 
 ## Ajax
@@ -289,7 +289,7 @@ span.addEventListener("click",function(){
 #### 手写 XMLHttpRequest 不借助任何库
 
   ```js
-  var xhr = new XMLHttpRequest()
+var xhr = new XMLHttpRequest()
 xhr.onreadystatechange = function () {
     // 这里的函数异步执行，可参考之前 JS 基础中的异步模块
     if (xhr.readyState == 4) {
@@ -311,25 +311,15 @@ $.ajax({
 	   data: "name=garfield&age=18",
 	   success: function(data){
 				console.log(data)
-		  },
-		  error:function(xhr){
-		     console.log(xhr)
-		  }
+       },
+       error:function(xhr){
+         console.log(xhr)
+       }
 	});
   ``` 
   
 #### xhr.readyState的状态码
-    1、0 -代理被创建，但尚未调用 open() 方法
+  1、0 -代理被创建，但尚未调用 open() 方法
 	2、1 -open() 方法已经被调用
 	3、2 -send() 方法已经被调用，并且头部和状态已经可获得
 	4、3 -下载中， responseText 属性已经包含部分数据
-
-
-
-
-
-
-
- &emsp;&emsp;
-  ```js
-  ```

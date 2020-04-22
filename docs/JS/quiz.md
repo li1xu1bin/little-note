@@ -230,7 +230,7 @@ alert(foo + bar);
 1、val1-val2从小到大
 
  ```js
- var array = [1,4,-8,-3,6,12,9,8];
+var array = [1,4,-8,-3,6,12,9,8];
 function compare1(val1,val2){
     return val1-val2;
 };
@@ -245,7 +245,7 @@ console.log(array);
  
  
  ```js
- var arr = [5,3,1,6,4,3,2];
+var arr = [5,3,1,6,4,3,2];
 arr.sort(); // [1, 2, 3, 3, 4, 5, 6]
  ```
  一样如果要从大到小
@@ -272,20 +272,21 @@ arr.sort(function(a,b){
 ## 插入排序
 
 ```js
-function insert(arr) { 　
-　var s; 　
-　for (var i = 1; i < arr.length; i++) { 　
-　　　for (var j = i; j > 0; j--) { 　　
-　　　　if (arr[j] < arr[j - 1]) { 　　　　　
-　　　s=arr[j]; 　　　　
-　　　　arr[j]=arr[j-1] 　　　　　　　
-　arr[j-1]=s console.log(arr) //可以打印出来每一个改变的步骤 　　　
-　　　} 　　
-　　} 　
-　} 　
- return arr
- } 
-console.log(insert([3,3,4,2,1,4,4,3,7,8]))
+function insert(arr) {
+    var s;
+    for (var i = 1; i < arr.length; i++) {
+        for (var j = i; j > 0; j--) {
+            if (arr[j] < arr[j - 1]) {
+                s = arr[j];
+                arr[j] = arr[j - 1];
+                arr[j - 1] = s;
+                console.log(arr) //可以打印出来每一个改变的步骤 　　　
+            }
+        }
+    }
+    return arr
+}
+console.log(insert([3, 3, 4, 2, 1, 4, 4, 3, 7, 8]))
 
 
 ```
@@ -295,20 +296,26 @@ console.log(insert([3,3,4,2,1,4,4,3,7,8]))
 
 ```js
 function bubble(arr) {
- var s 
-for (var i =0;i<arr.length;i++) { 
-  for (var j = 0; j < arr.length; j++) {
-    if (arr[j] > arr[j + 1]) {
-      s = arr[j]; arr[j]=arr[j+1]; 
-      arr[j+1]=s; 
-     }
-   }
- } 
- return arr
- }
- console.log(bubble([1,2,3,4,5,7,8]))
-
+    var s
+    for (var i = 0; i < arr.length; i++) {
+        for (var j = 0; j < arr.length; j++) {
+            if (arr[j] > arr[j + 1]) {
+                //交换位置
+                s = arr[j]; 
+                arr[j] = arr[j + 1];
+                arr[j + 1] = s;
+                console.log(arr) //可以打印出来每一个改变的步骤 　　　
+            }
+        }
+    }
+    return arr
+}
+console.log(bubble([2,1,8,5,3,4,7]))
+//[1, 2, 3, 4, 5, 7, 8]
 ```
+
+[插入排序与冒泡排序的区别](https://www.jianshu.com/p/ad57fea13b2a) 
+
 
 ## 字符串变数组 
 

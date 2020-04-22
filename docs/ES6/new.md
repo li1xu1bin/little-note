@@ -1,9 +1,32 @@
 # ES6常用新特性
 
 ## let && const 
-  &emsp;&emsp;let 命令也用于变量声明，但是作用域为局部  
-  &emsp;&emsp;const用于声明一个常量，设定后值不会再改变  
+let 用于变量声明，但是作用域为局部  
+let没有变量提升与暂时性死区，不能重复声明
+
+const用于声明一个常量，设定后值不会再改变  
   
+```js
+let arr = [];
+for(let i=0;i<2;i++){ // i虽然在全局作用域声明，但是在for循环体局部作用域中使用的时候，变量会被固定，不受外界干扰。
+    arr[i] = function(){
+        console.log(i); // i 是循环体内局部作用域，不受外界影响。
+    }
+}
+arr[0](); //0
+arr[1](); //1
+
+//ES5
+var arr = [];
+for(var i=0;i<2;i++){
+    arr[i] = function(){
+        console.log(i); // 执行此代码时，同步代码for循环已经执行完成
+    }
+}
+arr[0](); //2
+arr[1](); //2
+```
+
 ## 箭头函数
 箭头函数是 ES6 中新的函数定义形式，function name(arg1, arg2) {...}可以使用(arg1, arg2) => {...}来定义。示例如下：
   ```js

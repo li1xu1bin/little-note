@@ -123,3 +123,44 @@
 [渐进增强的 CSS 布局](https://juejin.im/post/5987acfd6fb9a03c502288f3)
 
 [Grid 构建圣杯布局](https://www.w3cplus.com/css3/holy-grail-layout-css-grid.html)
+
+## 双飞翼布局
+三栏布局，左右固定，中间自适应
+
+实现：
+left、center、right三种都设置左浮动  
+设置center宽度为100%（中间外包一层）  
+left设置负边距为100%，right设置负边距为自身宽度    
+内部content的margin值为左右两个侧栏留出空间，margin值大小为left和right宽度
+
+```
+  #left, #right, #center {
+    float: left;
+  }
+  #center {
+    width: 100%;
+    background: rgb(206, 201, 201);
+  }
+  #left {
+    width: 200px;
+    margin-left: -100%;
+    background: rgba(95, 179, 235, 0.972);
+  }
+  #right {
+    width: 150px;
+    margin-left: -150px;
+    background: rgb(231, 105, 2);
+  }
+  .content {
+    margin: 0 150px 0 200px;
+  }
+
+ <div id="container">
+    <div id="center" class="column">
+      <div class="content">#center</div>
+    </div>
+    <div id="left" class="column">#left</div>
+    <div id="right" class="column">#right</div>
+  </div>
+
+```
