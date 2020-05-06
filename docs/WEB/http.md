@@ -48,6 +48,9 @@
 4. 预加载和懒加载
 5. 服务端渲染页面，直接输出数据
 
+[前端性能优化最佳实践](https://csspod.com/frontend-performance-best-practices/)  
+
+
 ## SEO
 1. 语义化的 HTML 代码  
 2. 网站结构布局优化  

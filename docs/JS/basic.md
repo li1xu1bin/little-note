@@ -78,3 +78,53 @@ splice(index，len，item) 改变原数组
 index:数组开始下标  
 len: 替换/删除的长度  
 item:替换的值，删除操作的话 item为空
+
+## 遍历对象
+
+1.for...in  
+主要用于遍历对象的可枚举属性
+```
+const obj = {
+    id: 1,
+    name: 'zhangsan',
+    age: 18
+}
+
+for (let key in obj) {
+    console.log(key + '-' + obj[key])
+}
+//id-1
+//name-zhangsan
+//age-18
+```
+
+2.
+Object.keys() 返回obj对象由key组成的数组  
+Object.values() 返回obj对象由value组成的数组
+```
+const obj = {
+    id: 1,
+    name: 'zhangsan',
+    age: 18
+}
+
+Object.keys(obj);
+Object.values(obj);
+
+//["id", "name", "age"]
+//[1, "zhangsan", 18]
+```
+
+3.
+Object.getOwnPropertyNames(obj)
+```
+const obj = {
+    id: 1,
+    name: 'zhangsan',
+    age: 18
+}
+
+Object.getOwnPropertyNames(obj);
+
+//["id", "name", "age"]
+```

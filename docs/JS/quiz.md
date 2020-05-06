@@ -1,36 +1,34 @@
 
 # JS常见笔试题
 
-## 深拷贝与浅拷贝
-
 ## JS 实现一个闭包函数,每次调用都自增1
 
   ```js
-   var add = (function() {
+  var add = (function() {
   // 声明一变量,由于下面 return所以变量只会声明一次
   var count = 0; 
   return function() {
     return console.log(count++);
   };
-})();
+  })();
 
-add(); // 0
-add(); // 1
-add(); // 2
+  add(); // 0
+  add(); // 1
+  add(); // 2
 
   ```
 
-## 实现一个数组里面有1000条数据每条数据都是它的索引值
+## 实现一个数组里面有100条数据每条数据都是它的索引值
 
   ```js
-    var arr1 = new Array(100);
+  var arr1 = new Array(100);
 	for(var i=0;i<arr1.length;i++){
 		arr1[i] = i;
 	}
 	console.log(arr1);
   ```
 
-  ## ['1','2','3'].map(parseInt) 输出什么
+## ['1','2','3'].map(parseInt) 输出什么
 
   ```js
  ['1','2','3'].map(parseInt); // [1,NaN,NaN]
@@ -83,6 +81,7 @@ var add = function(a) {
   return addMore;     //获取第一个参数赋值给sum后，返回addMore函数。
 }
   ```
+
 ## 对数组进行乱序
  
   ```js
@@ -95,32 +94,14 @@ let tempArr = [1,2,3,4,5,'6',7,'8','a','b','z'].sort(function(){
  
   ```js
   var arr = [1, 10, 11, -1,'-5',12, 13, 14, 15, 2, 3, 4, 7, 8, 9];
-function MaxMinPlus(arr) {
-  // 返回最大值与最小值之差
-  return Array.isArray(arr) ? Math.max.apply(Math, arr) - Math.min.apply(Math, arr) : console.log('传入的不是数组亦或者未能解决的错误')
-}
+  function MaxMinPlus(arr) {
+    // 返回最大值与最小值之差
+    return Array.isArray(arr) ? Math.max.apply(Math, arr) - Math.min.apply(Math, arr) : console.log('传入的不是数组亦或者未能解决的错误')
+  }
 
 
   ```	
- 
-## 打印结果
 
-```js
-var foo = 10 + '20'; 
-console.log(10 + 1 + '20')
- console.log('20' + 1 + 2)
-   ```
-   
-  
-   ```js
-var a = 10;
-(function(){
-	var a = 200;
-})();
- console.log(a)
- //a=10
-   ```
-  
 ## 判断x是否为整数
 方法一、typeof 
 
@@ -158,7 +139,7 @@ isInteger(3.3) // false
 isInteger('') // false
 isInteger('3') // false
 isInteger(true) // false
-isInteger([]) // false、
+isInteger([]) // false
 
 //很不错，但也有一个缺点
 isInteger(1000000000000000000000) // false
@@ -212,7 +193,7 @@ a(arr)
  let arrs = [...arr,...arr]
     ```
 	
-## 问题：下面两个 alert 的结果是什么？	
+## 下面两个 alert 的结果是什么？	
 
  ```js
 var foo = "Hello";
