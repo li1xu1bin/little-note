@@ -1,4 +1,4 @@
-### 原型
+## 原型
 1、每个对象（除了null），都有一个_ _proto_ _属性，指向原型对象  
 2、每个函数，都有一个 prototype 属性，即原型对象  
 3、所有的原型对象都是 Object 的实例，所以 _proto_都指向 Object （构造函数）的原型对象。而 Object 构造函数的_ _proto_ _ 指向 null（停止查找）
@@ -22,7 +22,7 @@
   console.log(person.constructor === Person.prototype.constructor); // true
 
   ```
-### 原型链
+## 原型链
 原型链：原型链就是多个对象通过 __proto__ 的方式连接了起来。
 instanceof 的原理是通过判断该对象的原型链中是否可以找到该构造类型的 prototype 类型。
  
@@ -34,9 +34,9 @@ instanceof 的原理是通过判断该对象的原型链中是否可以找到�
  console.log(a.__proto__.__proto__.__proto__); //null
   ```
 
-### 继承（本质为原型）
+## 继承（本质为原型）
 既然要实现继承，那么首先我们得有一个父类
-  ```
+  ```js
 // 定义一个动物类
 function Animal (name) {
   // 属性
@@ -53,13 +53,14 @@ Animal.prototype.eat = function(food) {
   ```
 
 
-### 继承的实现方式：  
+### 继承的实现方式：
+
 #####  1、原型链继承
 核心： 将父类的实例作为子类的原型  
-  ```
+  ```js
 function Cat(){ 
 }
-Cat.prototype = new Animal();
+Cat.prototype = new Animal();//新实例的原型等于父类的实例
 Cat.prototype.name = 'cat';
 
 //　Test Code
@@ -82,11 +83,12 @@ console.log(cat instanceof Cat); //true
      2、无法实现多继承
      3、来自原型对象的引用属性是所有实例共享的（详细请看附录代码： 示例1）
      4、创建子类实例时，无法向父类构造函数传参
+
 #####  2、构造继承
  核心：使用父类的构造函数来增强子类实例，等于是复制父类的实例属性给子类（没用到原型）  
- ```
+ ```js
 function Cat(name){
-  Animal.call(this);
+  Animal.call(this);//使用call()或apply()
   this.name = name || 'Tom';
 }
 
@@ -108,9 +110,39 @@ console.log(cat instanceof Cat); // true
      2、只能继承父类的实例属性和方法，不能继承原型属性/方法
      3、无法实现函数复用，每个子类都有父类实例函数的副本，影响性能
 	 
-#####  3、实例继承
-核心：为父类实例添加新特性，作为子类实例返回
+
+#####  3、组合继承（组合原型链继承和借用构造函数继承）
+核心：通过调用父类构造，继承父类的属性并保留传参的优点，然后通过将父类实例作为子类原型，实现函数复用
+  ```js
+function Cat(name){
+  Animal.call(this);
+  this.name = name || 'Tom';
+}
+Cat.prototype = new Animal();
+
+Cat.prototype.constructor = Cat;
+
+// Test Code
+var cat = new Cat();
+console.log(cat.name);
+console.log(cat.sleep());
+console.log(cat instanceof Animal); // true
+console.log(cat instanceof Cat); // true
   ```
+特点：
+
+    1、弥补了方式2的缺陷，可以继承实例属性/方法，也可以继承原型属性/方法
+    2、既是子类的实例，也是父类的实例
+    3、不存在引用属性共享问题
+    4、可传参
+    6、函数可复用
+缺点：调用了两次父类构造函数，生成了两份实例（子类实例将子类原型上的那份屏蔽了）  
+推荐指数：★★★★（仅仅多消耗了一点内存）
+
+
+#####  4、实例继承
+核心：为父类实例添加新特性，作为子类实例返回
+  ```js
 function Cat(name){
   var instance = new Animal();
   instance.name = name || 'Tom';
@@ -134,8 +166,8 @@ console.log(cat instanceof Cat); // false
     2、不支持多继承
 
 
-#####  4、拷贝继承
-  ```
+#####  5、拷贝继承
+  ```js
 function Cat(name){
   var animal = new Animal();
   for(var p in animal){
@@ -157,39 +189,10 @@ console.log(cat instanceof Cat); // true
     1、效率较低，内存占用高（因为要拷贝父类的属性）
     2、无法获取父类不可枚举的方法（不可枚举方法，不能使用for in 访问到）
 
-#####  5、组合继承
-核心：通过调用父类构造，继承父类的属性并保留传参的优点，然后通过将父类实例作为子类原型，实现函数复用
-  ```
-function Cat(name){
-  Animal.call(this);
-  this.name = name || 'Tom';
-}
-Cat.prototype = new Animal();
-
-// 感谢 @学无止境c 的提醒，组合继承也是需要修复构造函数指向的。
-
-Cat.prototype.constructor = Cat;
-
-// Test Code
-var cat = new Cat();
-console.log(cat.name);
-console.log(cat.sleep());
-console.log(cat instanceof Animal); // true
-console.log(cat instanceof Cat); // true
-  ```
-特点：
-
-    1、弥补了方式2的缺陷，可以继承实例属性/方法，也可以继承原型属性/方法
-    2、既是子类的实例，也是父类的实例
-    3、不存在引用属性共享问题
-    4、可传参
-    6、函数可复用
-缺点：调用了两次父类构造函数，生成了两份实例（子类实例将子类原型上的那份屏蔽了）  
-推荐指数：★★★★（仅仅多消耗了一点内存）
 
 #####  6、寄生组合继承
 核心：通过寄生方式，砍掉父类的实例属性，这样，在调用两次父类的构造的时候，就不会初始化两次实例方法/属性，避免的组合继承的缺点
-  ```
+  ```js
 function Cat(name){
   Animal.call(this);
   this.name = name || 'Tom';

@@ -11,8 +11,6 @@ Model 数据
 ViewModel 视图模型，连接Model和View，整合Observer、Compile和Watcher  
 View 视图
 
-![pic](https://user-gold-cdn.xitu.io/2018/5/7/16339e3e3f24873d?imageView2/0/w/1280/h/960/format/webp/ignore-error/1)
-
 
 vue响应式原理：Object.defineProperty 将data转为getter/setter
 
@@ -42,6 +40,20 @@ deactivated：keep-alive关闭时调用
 
 beforeDestroy：实例销毁之前调用。实例仍然完全可用，this仍能获取到实例  
 destroy：实例销毁后调用，调用后，Vue实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁
+
+### vue父子组件的渲染顺序
+
+1.加载渲染过程
+父beforeCreate->父created->父beforeMount->子beforeCreate->子created->子beforeMount->子mounted->父mounted
+
+2.子组件更新过程
+父beforeUpdate->子beforeUpdate->子updated->父updated
+
+3.父组件更新过程
+父beforeUpdate->父updated
+
+4.销毁过程
+父beforeDestroy->子beforeDestroy->子destroyed->父destroyed
 
 ## 组件通信
 

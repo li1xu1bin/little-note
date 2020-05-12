@@ -14,7 +14,7 @@
 * JavaScript
   * [JS基础](JS/basic.md)
   * [面向对象](JS/object.md)
-  * [原型链](JS/prototype.md)
+  * [原型与继承](JS/prototype.md)
   * [DOM&BOM](JS/dom.md)
   * [习题](JS/quiz.md)
 

@@ -46,7 +46,7 @@ arr.map((item, index) => {
   ```
 箭头函数存在的意义，第一写起来更加简洁，第二可以解决 ES6 之前函数执行中this是全局变量的问题（没有独立的作用域），看如下代码  
   ```js
-  function fn() {
+function fn() {
     console.log('real', this)  // {a: 100} ，该作用域下的 this 的真实的值
     var arr = [1, 2, 3]
     // 普通 JS
@@ -88,7 +88,9 @@ var Text = React.Text;
 var View = React.Text;
     ```
   
-## 模块化 import导入模块、export导出模块
+## 模块化 
+import导入模块  
+export导出模块  
 如果只是输出一个唯一的对象，使用export default即可，代码如下  
   ```js
   // 创建 util1.js 文件，内容如
@@ -121,8 +123,9 @@ fn2()
 class 其实一直是 JS 的关键字（保留字），但是一直没有正式使用，直到 ES6 。 ES6 的 class 就是取代之前构造函数初始化对象的形式，从语法上更加符合面向对象的写法。例如：  
 
 JS 构造函数的写法  
+
   ```js
-  function MathHandle(x, y) {
+function MathHandle(x, y) {
   this.x = x;
   this.y = y;
 }
@@ -210,12 +213,63 @@ dog.eat()
 
 	
 	
-## Set 和 Map
-> 题目：ES6 中新增的数据类型有哪些？  
 
-Set 和 Map 都是 ES6 中新增的数据结构，是对当前 JS 数组和对象这两种重要数据结构的扩展。由于是新增的数据结构，目前尚未被大规模使用，但是作为前端程序员，提前了解是必须做到的。先总结一下两者最关键的地方：  
-    1、Set 类似于数组，但数组可以允许元素重复，Set 不允许元素重复
-    2、Map 类似于对象，但普通对象的 key 必须是字符串或者数字，而 Map 的 key 可以是任何数据类型
+
+## Promise异步编程
+
+Promise是 CommonJS 提出来的这一种规范，有多个版本，在 ES6 当中已经纳入规范，原生支持 Promise 对象，非 ES6 环境可以用类似 Bluebird、Q 这类库来支持。  
+Promise 可以将回调变成链式调用写法，流程更加清晰，代码更加优雅。  
+简单归纳下 Promise：三个状态、两个过程、一个方法，快速记忆方法：3-2-1  
+三个状态：pending、fulfilled、rejected
+ 
+ 两个过程：
+    1、pending→fulfilled（resolve）
+    2、pending→rejected（reject）
+ 
+  ```js  
+new Promise((resolve,reject)=>{
+   $.ajax({
+      url : "xxxxx",
+	  type : "post"
+	  success(res){
+	    resolve(res)
+	  },
+	  error(err){
+	    reject（err）
+	  }
+   });
+}).then(()=>{
+},()=>{
+})
+  ```
+  ### 执行顺序
+  ```js
+  console.log('E');
+
+  setTimeout(function(){
+    console.log('D')
+  },0)
+
+  var promise = new Promise(function(resolve, reject){
+      console.log('A')
+      resolve()
+  }).then(function(){
+      console.log('C')
+  })
+  console.log('B');
+  //  E
+  //  A
+  //  B
+  //  C
+  //  D
+  ```
+setTimeout是宏任务【macrotask】  
+Promise整体是微任务【microtask】
+先执行主线程，然后微任务，宏任务
+
+## Set 和 Map
+1、Set 类似于数组，但数组可以允许元素重复，Set 不允许元素重复  
+2、Map 类似于对象，但普通对象的 key 必须是字符串或者数字，而 Map 的 key 可以是任何数据类型
 
 	
 ####  Set
@@ -322,7 +376,7 @@ Map 实例的属性和方法如下：
     5、delete：删除成员
     6、clear：清空所有
 	
-  ```js 
+ ```
 const map = new Map();
 map.set('aaa', 100);
 map.set('bbb', 200);
@@ -376,36 +430,3 @@ for (let [key, value] of map.entries()) {
 // bbb 200
 
     ```
-
-## Promise
-   &emsp;&emsp;Promise是 CommonJS 提出来的这一种规范，有多个版本，在 ES6 当中已经纳入规范，原生支持 Promise 对象，非 ES6 环境可以用类似 Bluebird、Q 这类库来支持。  
-   &emsp;&emsp;Promise 可以将回调变成链式调用写法，流程更加清晰，代码更加优雅。  
-  &emsp;&emsp;简单归纳下 Promise：三个状态、两个过程、一个方法，快速记忆方法：3-2-1  
-  &emsp;&emsp;三个状态：pending、fulfilled、rejected
- 
- 两个过程：
-    1、pending→fulfilled（resolve）
-    2、pending→rejected（reject）
- 当然还有其他概念，如catch、 Promise.all/race，这里就不展开了  
- 
-  ```js  
-new Promise((resolve,reject)=>{
-   $.ajax({
-      url : "xxxxx",
-	  type : "post"
-	  success(res){
-	    resolve(res)
-	  },
-	  error(err){
-	    reject（err）
-	  }
-   });
-}).then(()=>{
-},()=>{
-})
-  ```
-  &emsp;&emsp;
-
-
-
-## for of
