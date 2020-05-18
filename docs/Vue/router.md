@@ -40,6 +40,7 @@ const router = new VueRouter({
   ]
 })
 ```  
+
 ### 路由组件守卫
 
 beforeRouteEnter(to, from, next) {}  
@@ -66,3 +67,34 @@ export default {
   }
 }
 ``` 
+
+## 路由传参
+
+1、通过<router-link>标签中的to传参
+
+```
+<router-link :to="{name:'view',query:{articleId:item.articleId}}">
+
+```
+
+2、query传递的参数会通过?xxx = xxx展示
+
+```
+this.$router.push({
+    path: '/back/article/new',
+    query: {
+      articleId: val
+    }
+})
+```
+
+3、通过param来传递参数
+
+```
+this.$router.push({
+    name:'Home',
+    params:{
+        id:id
+    }
+})
+```
