@@ -23,8 +23,25 @@ server {
 
 WebSocket 是一种双向通信协议，在建立连接之后，WebSocket 的 server 与 client 都能主动向对方发送或接收数据
 
+```
+onopen 连接建立
+onmessage 接收数据
+onerror 发生错误
+onclose 连接关闭
+send() 发送数据
+```
+
 ## JSONP
 利用script标签没有跨域限制的漏洞，动态的创建script标签，再去请求一个带参网址来实现跨域通信
+
+```
+(function(){
+    var _script = document.createElement('script');
+    _script.type = 'text/javascript';
+    _script.src = 'http://localhost/demo/';
+    document.body.appendChild(_script);
+})();
+```
 
 ## CORS
 
