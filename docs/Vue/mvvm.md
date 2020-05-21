@@ -11,6 +11,9 @@ Model 数据
 ViewModel 视图模型，连接Model和View，整合Observer、Compile和Watcher  
 View 视图
 
+V<->VM>M>VM  
+V和VM双向绑定  
+关注model变化，通过VM自动去更新Dom状态，开发者不用做繁琐的dom操作
 
 vue响应式原理：Object.defineProperty 将data转为getter/setter
 

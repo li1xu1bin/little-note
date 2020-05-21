@@ -98,3 +98,28 @@ this.$router.push({
     }
 })
 ```
+
+## 实例解决
+
+1.实现页面的不重新加载
+<keep-alive>包裹动态组件时，会缓存不活动的组件实例，而不是销毁它们，也就是所谓的第一次进入页面加载，返回等第二次进入页面不加载
+```
+<keep-alive>
+		<router-view v-if="$route.meta.keepAlive"></router-view>
+</keep-alive>
+```
+
+2.实现页面返回原来的位置
+```js
+// 跳转离开前，记录当前页面的位置
+beforeRouteLeave(to, from, next) {
+  this.scroll = this.$refs.medicalListContainer.scrollTop;
+  next()
+},
+// 页面进入前
+beforeRouteEnter(to, from, next) {
+    next(vm => {
+      vm.$refs.medicalListContainer.scrollTop = vm.scroll;
+    })
+}
+```
