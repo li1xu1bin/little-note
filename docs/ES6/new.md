@@ -28,9 +28,12 @@ arr[1](); //2
 ```
 
 ## 箭头函数
-箭头函数是 ES6 中新的函数定义形式，function name(arg1, arg2) {...}可以使用(arg1, arg2) => {...}来定义。示例如下：
-  ```js
-  // JS 普通函数
+不需要 function 关键字来创建函数
+省略 return 关键字
+继承当前上下文的 this 关键字
+
+ ```js
+// JS 普通函数
 var arr = [1, 2, 3]
 arr.map(function (item) {
     console.log(index)
@@ -38,11 +41,8 @@ arr.map(function (item) {
 })
 
 // ES6 箭头函数
-const arr = [1, 2, 3]
-arr.map((item, index) => {
-    console.log(index)
-    return item + 1
-})
+[1,2,3].map(x => x + 1)
+
   ```
 箭头函数存在的意义，第一写起来更加简洁，第二可以解决 ES6 之前函数执行中this是全局变量的问题（没有独立的作用域），看如下代码  
   ```js
@@ -63,7 +63,58 @@ function fn() {
 fn.call({a: 100})
   
   ```
-  
+
+## 模板字符串
+
+1.字符串格式化
+```js
+//ES5 
+var name = 'lux'
+console.log('hello' + name)
+//es6
+const name = 'lux'
+console.log(`hello ${name}`) //hello lux
+```
+
+2.在ES5时我们通过反斜杠(\)来做多行字符串或者字符串一行行拼接。ES6反引号(``)直接搞定
+```js
+// ES5
+var msg = "Hi \
+man!
+"
+// ES6
+const template = `<div>
+    <span>hello world</span>
+</div>`
+```
+
+3.高级用法
+```js
+// 1.includes：判断是否包含然后直接返回布尔值
+const str = 'hahay'
+console.log(str.includes('y')) // true
+
+// 2.repeat: 获取字符串重复n次
+const str = 'he'
+console.log(str.repeat(3)) // 'hehehe'
+//如果你带入小数, Math.floor(num) 来处理
+// s.repeat(3.1) 或者 s.repeat(3.9) 都当做成 s.repeat(3) 来处理
+
+// 3. startsWith 和 endsWith 判断是否以 给定文本 开始或者结束
+const str =  'hello world!'
+console.log(str.startsWith('hello')) // true
+console.log(str.endsWith('!')) // true
+
+// 4. padStart 和 padEnd 填充字符串，应用场景：时分秒
+setInterval(() => {
+    const now = new Date()
+    const hours = now.getHours().toString()
+    const minutes = now.getMinutes().toString()
+    const seconds = now.getSeconds().toString()
+    console.log(`${hours.padStart(2, 0)}:${minutes.padStart(2, 0)}:${seconds.padStart(2, 0)}`)
+}, 1000)
+```
+
 ## 解构赋值
  ES6 允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构（Destructuring）  
    ```js
@@ -215,12 +266,53 @@ dog.eat()
 	
 
 
+## 展开运算符
+组装对象或者数组
+
+```js
+//数组
+const color = ['red', 'yellow']
+const colorful = [...color, 'green', 'pink']
+console.log(colorful) //[red, yellow, green, pink]
+
+//对象
+const alp = { fist: 'a', second: 'b'}
+const alphabets = { ...alp, third: 'c' }
+console.log(alphabets) //{ "fist": "a", "second": "b", "third": "c"
+
+const first = {
+    a: 1,
+    b: 2,
+    c: 6,
+}
+const second = {
+    c: 3,
+    d: 4
+}
+const total = { ...first, ...second }
+console.log(total) // { a: 1, b: 2, c: 3, d: 4 }
+
+```
+
+获取特定项
+```js
+//数组
+const number = [1,2,3,4,5]
+const [first, ...rest] = number
+console.log(rest) //2,3,4,5
+//对象
+const user = {
+    username: 'lux',
+    gender: 'female',
+    age: 19,
+    address: 'peking'
+}
+const { username, ...rest } = user
+console.log(rest) //{"address": "peking", "age": 19, "gender": "female"
+```
 ## Promise异步编程
 
-Promise是 CommonJS 提出来的这一种规范，有多个版本，在 ES6 当中已经纳入规范，原生支持 Promise 对象，非 ES6 环境可以用类似 Bluebird、Q 这类库来支持。  
-Promise 可以将回调变成链式调用写法，流程更加清晰，代码更加优雅。  
-简单归纳下 Promise：三个状态、两个过程、一个方法，快速记忆方法：3-2-1  
-三个状态：pending、fulfilled、rejected
+三个状态：pending（进行中）、fulfilled（已完成）、rejected（已拒绝）
  
  两个过程：
     1、pending→fulfilled（resolve）
@@ -267,7 +359,40 @@ setTimeout是宏任务【macrotask】
 Promise整体是微任务【microtask】
 先执行主线程，然后微任务，宏任务
 
+
+## import 和 export
+
+import导入模块、export导出模块
+
+```js
+//全部导入
+import people from './example'
+
+//有一种特殊情况，即允许你将整个模块当作单一对象进行导入
+//该模块的所有导出都会作为对象的属性存在
+import * as example from "./example.js"
+console.log(example.name)
+console.log(example.age)
+console.log(example.getName())
+
+//导入部分
+import {name, age} from './example'
+
+// 导出默认, 有且只有一个默认
+export default App
+
+// 部分导出
+export class App extend Component {};
+```
+
+1.当用export default people导出时，就用 import people 导入（不带大括号）
+
+2.当用export name 时，就用import { name }导入（记得带上大括号）
+
+3.一个文件里，有且只能有一个export default。但可以有多个export。
+
 ## Set 和 Map
+
 1、Set 类似于数组，但数组可以允许元素重复，Set 不允许元素重复  
 2、Map 类似于对象，但普通对象的 key 必须是字符串或者数字，而 Map 的 key 可以是任何数据类型
 
@@ -430,3 +555,4 @@ for (let [key, value] of map.entries()) {
 // bbb 200
 
     ```
+
