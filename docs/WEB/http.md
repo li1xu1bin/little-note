@@ -40,6 +40,50 @@
 * 回流消耗性能开支比重绘大
 * 回流必将引起重绘，重绘不一定会引起回流
 
+## 防抖和节流
+* 防抖：对于短时间内连续触发的事件（上面的滚动事件），防抖的含义就是让某个时间期限（如上面的1000毫秒）内，事件处理函数只执行一次。
+```js
+function debounce(fn,delay){
+    let timer = null //借助闭包
+    return function() {
+        if(timer){
+            clearTimeout(timer) 
+        }
+        timer = setTimeout(fn,delay) // 简化写法
+    }
+}
+// 然后是旧代码
+function showTop  () {
+    var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+　　console.log('滚动条位置：' + scrollTop);
+}
+window.onscroll = debounce(showTop,1000) 
+```
+
+* 节流：如果短时间内大量触发同一事件，那么在函数执行一次之后，该函数在指定的时间期限内不再工作，直至过了这段时间才重新生效。
+```js
+function throttle(fn,delay){
+    let valid = true
+    return function() {
+       if(!valid){
+           //休息时间 暂不接客
+           return false 
+       }
+       // 工作时间，执行函数并且在间隔期内把状态位设为无效
+        valid = false
+        setTimeout(() => {
+            fn()
+            valid = true;
+        }, delay)
+    }
+}
+function showTop  () {
+    var scrollTop = document.body.scrollTop || document.documentElement.scrollTop;
+　　console.log('滚动条位置：' + scrollTop);
+}
+window.onscroll = throttle(showTop,1000) 
+```
+
 ## 性能优化
 
 1. 减少HTTP请求：压缩合并代码，图片压缩，合并sprite
@@ -59,8 +103,13 @@
 5. 启用GZIP压缩，提高网站的加载速度  
 6. SSR技术  
 
-## http缓存
+## HTTP缓存
 浏览器第一次向一个web服务器发起http请求后，服务器会返回请求的资源，并且在响应头中添加一些有关缓存的字段如：Cache-Control、Expires（过期时间）、Last-Modified、ETag、Date等等。
 
 强缓存：浏览器直接从本地缓存中获取数据，不与服务器进行交互。  
 协商缓存：浏览器发送请求到服务器，服务器判定是否可使用本地缓存。
+
+## HTTP和HTTPS区别
+http：80端口  
+https：443端口，加多一层SSL协议  
+内容加密 验证身份 保证数据完整性

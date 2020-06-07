@@ -31,3 +31,4 @@
   * [HTTP](WEB/http.md)
   * [跨域](WEB/jsonp.md)
   * [存储](WEB/cookie.md)
+  * [微信开发](WEB/wechat.md)

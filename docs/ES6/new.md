@@ -2,9 +2,9 @@
 
 ## let && const 
 let 用于变量声明，但是作用域为局部  
-let没有变量提升与暂时性死区，不能重复声明
+let 没有变量提升与暂时性死区，不能重复声明
 
-const用于声明一个常量，设定后值不会再改变  
+const 用于声明一个常量，设定后值不会再改变  
   
 ```js
 let arr = [];
@@ -28,15 +28,13 @@ arr[1](); //2
 ```
 
 ## 箭头函数
-不需要 function 关键字来创建函数
-省略 return 关键字
-继承当前上下文的 this 关键字
+不需要 function 关键字来创建函数  
+省略 return 关键字  
+继承当前上下文的 this 关键字  
 
  ```js
 // JS 普通函数
-var arr = [1, 2, 3]
-arr.map(function (item) {
-    console.log(index)
+[1, 2, 3].map(function (item) {
     return item + 1
 })
 
@@ -137,36 +135,6 @@ let c = 3;
 var StyleSheet = React.StyleSheet;
 var Text = React.Text;
 var View = React.Text;
-    ```
-  
-## 模块化 
-import导入模块  
-export导出模块  
-如果只是输出一个唯一的对象，使用export default即可，代码如下  
-  ```js
-  // 创建 util1.js 文件，内容如
-export default {
-    a: 100
-}
-
-// 创建 index.js 文件，内容如
-import obj from './util1.js'
-console.log(obj)
-    ```
-如果想要输出许多个对象，就不能用`default`了，且`import`时候要加`{...}`，代码如下  
-  ```js
-// 创建 util2.js 文件，内容如
-export function fn1() {
-    alert('fn1')
-}
-export function fn2() {
-    alert('fn2')
-}
-
-// 创建 index.js 文件，内容如
-import { fn1, fn2 } from './util2.js'
-fn1()
-fn2()
     ```
 	
 ## 类class
@@ -360,9 +328,36 @@ Promise整体是微任务【microtask】
 先执行主线程，然后微任务，宏任务
 
 
-## import 和 export
+## 模块化 import 和 export
+import导入模块  
+export导出模块  
+如果只是输出一个唯一的对象，使用export default即可，代码如下  
+  ```js
+// 创建 util1.js 文件，内容如
+export default {
+    a: 100
+}
 
-import导入模块、export导出模块
+// 创建 index.js 文件，内容如
+import obj from './util1.js'
+console.log(obj)
+    ```
+如果想要输出许多个对象，就不能用`default`了，且`import`时候要加`{...}`，代码如下  
+  ```js
+// 创建 util2.js 文件，内容如
+export function fn1() {
+    alert('fn1')
+}
+export function fn2() {
+    alert('fn2')
+}
+
+// 创建 index.js 文件，内容如
+import { fn1, fn2 } from './util2.js'
+fn1()
+fn2()
+    ```
+    
 
 ```js
 //全部导入
@@ -391,7 +386,7 @@ export class App extend Component {};
 
 3.一个文件里，有且只能有一个export default。但可以有多个export。
 
-## Set 和 Map
+## Set 和 Map 数据结构
 
 1、Set 类似于数组，但数组可以允许元素重复，Set 不允许元素重复  
 2、Map 类似于对象，但普通对象的 key 必须是字符串或者数字，而 Map 的 key 可以是任何数据类型
@@ -402,7 +397,7 @@ export class App extend Component {};
 Set 实例不允许元素有重复，可以通过以下示例证明。可以通过一个数组初始化一个 Set 实例，或者通过add添加元素，元素不能重复，重复的会被忽略。
 
 
-  ```js
+```js
 // 例1
 const set = new Set([1, 2, 3, 4, 4]);
 console.log(set) // Set(4) {1, 2, 3, 4}
@@ -416,12 +411,12 @@ for (let item of set) {
 // 2 3 5 4 8
   ```
 Set 实例的属性和方法有 
- 
-    1、size：获取元素数量。
-    2、add(value)：添加元素，返回 Set 实例本身。
-    3、delete(value)：删除元素，返回一个布尔值，表示删除是否成功。
-    4、has(value)：返回一个布尔值，表示该值是否是 Set 实例的元素。
-    5、clear()：清除所有元素，没有返回值。
+
+1、size：获取元素数量。  
+2、add(value)：添加元素，返回 Set 实例本身。  
+3、delete(value)：删除元素，返回一个布尔值，表示删除是否成功。  
+4、has(value)：返回一个布尔值，表示该值是否是 Set 实例的元素。   
+5、clear()：清除所有元素，没有返回值。
 
   ```js
 const s = new Set();
@@ -439,13 +434,12 @@ s.has(2) // false
 s.clear();
 console.log(s);  // Set(0) {}
   ```
- Set 实例的遍历，可使用如下方法
+Set 实例的遍历，可使用如下方法
  
- 
-    1、keys()：返回键名的遍历器。
-    2、values()：返回键值的遍历器。不过由于 Set 结构没有键名，只有键值（或者说键名和键值是同一个值），所以keys()和values()返回结果一致。
-    3、entries()：返回键值对的遍历器。
-    4、forEach()：使用回调函数遍历每个成员
+1、keys()：返回键名的遍历器。  
+2、values()：返回键值的遍历器。不过由于 Set 结构没有键名，只有键值（或者说键名和键值是同一个值），所以keys()和values()返回结果一致。  
+3、entries()：返回键值对的遍历器。  
+4、forEach()：使用回调函数遍历每个成员
 	
   ```js	
 let set = new Set(['aaa', 'bbb', 'ccc']);
@@ -490,16 +484,15 @@ map.has(obj) // true
 map.delete(obj) // true
 map.has(obj) // false
     ``` 
-需要使用new Map()初始化一个实例，下面代码中set get has delete顾名即可思义（下文也会演示）。其中，map.set(obj, 'OK')就是用对象作为的 key （不光可以是对象，任何数据类型都可以），并且后面通过map.get(obj)正确获取了
 
 Map 实例的属性和方法如下：
 
-    1、size：获取成员的数量
-    2、set：设置成员 key 和 value
-    3、get：获取成员属性值
-    4、has：判断成员是否存在
-    5、delete：删除成员
-    6、clear：清空所有
+1、size：获取成员的数量  
+2、set：设置成员 key 和 value  
+3、get：获取成员属性值  
+4、has：判断成员是否存在  
+5、delete：删除成员  
+6、clear：清空所有  
 	
  ```
 const map = new Map();
@@ -519,10 +512,10 @@ map.clear()
     ```
 Map 实例的遍历方法有：
 
-    1、keys()：返回键名的遍历器。
-    2、values()：返回键值的遍历器。
-    3、entries()：返回所有成员的遍历器。
-    4、forEach()：遍历 Map 的所有成员
+1、keys()：返回键名的遍历器。  
+2、values()：返回键值的遍历器。  
+3、entries()：返回所有成员的遍历器。  
+4、forEach()：遍历 Map 的所有成员
 	
   ```js 
 const map = new Map();
@@ -553,6 +546,30 @@ for (let [key, value] of map.entries()) {
 }
 // aaa 100
 // bbb 200
+```
+
+```js
+let map = new Map([
+  [1, 'one'],
+  [2, 'two'],
+  [3, 'three'],
+]);
+
+[...map.keys()]
+// [1, 2, 3]
+
+[...map.values()]
+// ['one', 'two', 'three']
+
+[...map.entries()]
+// [[1,'one'], [2, 'two'], [3, 'three']]
+
+[...map]
+// [[1,'one'], [2, 'two'], [3, 'three']]
 
     ```
+
+
+
+
 

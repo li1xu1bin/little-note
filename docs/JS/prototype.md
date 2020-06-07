@@ -13,6 +13,13 @@
   console.log(Object.prototype.__proto__ === null); // true
 
   ```
+
+### 构造函数
+1.构造函数习惯上首字母大写  
+2.a.普通函数的调用方式：直接调用 person();  
+2.b.构造函数的调用方式：需要使用new关键字来调用 new Person();  
+3.内部用this 来构造属性和方法 
+
 ### constructor属性
 
 原型对象上的一个指向构造函数的属性。

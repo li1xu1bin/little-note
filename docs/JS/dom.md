@@ -1,6 +1,4 @@
 
-# 常用的JS-Web-API 
-
 ## BOM
  BOM（浏览器对象模型）是浏览器本身的一些信息的设置和获取，例如获取浏览器的宽度、高度，设置让浏览器跳转到哪个地址
   
@@ -305,7 +303,7 @@ xhr.send(data);        //发送
  jq
  
   ```js
-$.ajax({
+  $.ajax({
 	   type: "POST",
 	   url: "test.php",
 	   data: "name=garfield&age=18",
@@ -319,7 +317,7 @@ $.ajax({
   ``` 
   
 #### xhr.readyState的状态码
-  1、0 -代理被创建，但尚未调用 open() 方法
-	2、1 -open() 方法已经被调用
-	3、2 -send() 方法已经被调用，并且头部和状态已经可获得
-	4、3 -下载中， responseText 属性已经包含部分数据
+1、0 -代理被创建，但尚未调用 open() 方法  
+2、1 -open() 方法已经被调用  
+3、2 -send() 方法已经被调用，并且头部和状态已经可获得  
+4、3 -下载中， responseText 属性已经包含部分数据
