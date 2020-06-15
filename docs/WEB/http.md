@@ -83,7 +83,8 @@ function showTop  () {
 }
 window.onscroll = throttle(showTop,1000) 
 ```
-
+防抖：只判断最后一次，停下来才执行    
+节流：隔一段时间才判断一次
 ## 性能优化
 
 1. 减少HTTP请求：压缩合并代码，图片压缩，合并sprite

@@ -22,10 +22,10 @@
 
   ```js
   var arr1 = new Array(100);
-	for(var i=0;i<arr1.length;i++){
-		arr1[i] = i;
-	}
-	console.log(arr1);
+  for(var i=0;i<arr1.length;i++){
+    arr1[i] = i;
+  }
+  console.log(arr1);
   ```
 
 ## ['1','2','3'].map(parseInt) 输出什么
