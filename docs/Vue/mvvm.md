@@ -24,6 +24,20 @@ vue响应式原理：Object.defineProperty 将data转为getter/setter
 
 [实现自己的 MVVM](https://juejin.im/post/5e1b3144f265da3e4b5be2e3#heading-1)
 
+### MVVM模式的优点:
+
+低耦合:View可以独立于Model变化和修改,一个ViewModel可以绑定到不同的View上,当View变化的时候Model可以不变,当Model变化的时候View也可以不变  
+可重用性: 可以把一些视图逻辑放在一个ViewModel里面,让很多View重用这段视图逻辑  
+独立开发: 开发人员可以专注于业务逻辑和数据的开发,设计人员可以专注于页面的设计
+
+
+### MVVM和MVC的区别:
+
+MVC中Controller演变成MVVM中的ViewModel  
+MVVM通过数据来显示视图层而不是节点操作  
+MVVM主要解决了MVC中大量的dom操作使页面渲染性能降低,加载速度变慢,影响用户体验
+
+
 ## 生命周期 
 Vue实例从开始创建、初始化数据、编译模板、挂载DOM、渲染、更新、渲染、卸载等一系列过程，称为Vue的生命周期
 
@@ -69,7 +83,7 @@ destroy：实例销毁后调用，调用后，Vue实例指示的所有东西都�
 //App.vue父组件
 <template>
   <div id="app">
-    <users v-bind:users="users"></users>//前者自定义名称便于子组件调用，后者要传递数据名
+    <users :users="users"></users>//前者自定义名称便于子组件调用，后者要传递数据名
   </div>
 </template>
 <script>
@@ -101,6 +115,9 @@ export default {
   props:{
     users:{           //这个就是父组件中子标签自定义名字
       type:Array,
+      default () {
+        return []
+      },
       required:true
     }
   }

@@ -26,6 +26,7 @@
   * [路由](Vue/router.md)
   * [Vuex](Vue/vuex.md)
   * [进阶](Vue/advance.md)
+  * [技巧](Vue/snippet.md)
 
 * Web相关
   * [HTTP](WEB/http.md)

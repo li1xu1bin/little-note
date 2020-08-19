@@ -79,11 +79,28 @@ index:数组开始下标
 len: 替换/删除的长度  
 item:替换的值，删除操作的话 item为空
 
+```js
+var num = '12345';
+var arr = ['a','b','c','d'];
+console.log(num.slice(1))//2345
+console.log(num.slice(1,3))//23
+console.log(arr.slice(1))//["b", "c", "d"]
+console.log(arr.slice(1,3))//["b", "c"]
+
+var arr = ['a','b','c','d'];
+arr.splice(-1,1) 
+console.log(arr);//['a','b','c']
+
+var arr = ['a','b','c','d'];
+arr.splice(1,2,'ttt');
+console.log(arr);//['a','ttt','d']
+```
+
 ## 遍历对象
 
 1.for...in  
 主要用于遍历对象的可枚举属性
-```
+```js
 const obj = {
     id: 1,
     name: 'zhangsan',

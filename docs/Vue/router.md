@@ -48,8 +48,11 @@ beforeRouteUpdate(to, from, next) {}
 beforeRouteLeave(to,from, next){}
 
 ```js
+<template>
+\\\
+</template>
+
 export default {
-  template: `...`,
   beforeRouteEnter (to, from, next) {
     // 在渲染该组件的对应路由前调用
     // 不！能！获取组件实例 `this`

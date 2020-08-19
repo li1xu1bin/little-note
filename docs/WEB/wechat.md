@@ -66,4 +66,54 @@ wx.requestPayment({
 
 3. 根据token获取用户信息
 
+```js
+this.$router.onReady(() => {
+  let token = this.$route.query.token
+  localStorage.setItem('token', token)
+})
+```
 
+### 微信支付
+```js
+wx.config({
+  debug: false,
+  appId: res.data.appId,
+  timestamp: res.data.timestamp,
+  nonceStr: res.data.noncestr,
+  signature: res.data.signature,
+  jsApiList: ['chooseWXPay']
+})
+wx.ready(res => {
+  wx.checkJsApi({
+    jsApiList: ['chooseWXPay'],
+    success: res => {
+      console.log('checked api:', res)
+    },
+    fail: err => {
+      console.log('check api fail:', err)
+    }
+  })
+})
+wx.chooseWXPay({
+  // 支付签名时间戳，注意微信jssdk中的所有使用timestamp字段均为小写。但最新版的支付后台生成签名使用的timeStamp字段名需大写其中的S字符
+  timestamp: data.timeStamp,
+  // 支付签名随机串，不长于 32 位
+  nonceStr: data.nonceStr,
+  // 统一支付接口返回的prepay_id参数值，提交格式如：prepay_id=\*\*\*）
+  package: data.package,
+  // 签名方式，默认为'SHA1'，使用新版支付需传入'MD5'
+  signType: data.signType,
+  // 支付签名
+  paySign: data.paySign,
+  // 支付成功后的回调函数
+  success: function (res) {
+  },
+  // 支付取消回调函数
+  cencel: function (res) {
+  },
+  // 支付失败回调函数
+  fail: function (res) {
+  }
+})
+
+```

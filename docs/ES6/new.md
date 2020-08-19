@@ -291,18 +291,21 @@ Promise 对象是 JavaScript 的异步操作解决方案，为异步操作提供
 new Promise((resolve,reject)=>{
    $.ajax({
       url : "xxxxx",
-	  type : "post"
-	  success(res){
-	    resolve(res)
-	  },
-	  error(err){
-	    reject（err）
-	  }
+	    type : "post"
+      success(res){
+        resolve(res)
+      },
+      error(err){
+        reject(err)
+      }
    });
-}).then(()=>{
-},()=>{
-})
+  })
+  .then(() => {
+  }
+  .catch(() => {
+  })
   ```
+  
   ### 执行顺序
   ```js
   console.log('E');
