@@ -141,3 +141,8 @@ beforeRouteEnter(to, from, next) {
     })
 }
 ```
+
+## 动态权限路由
+```
+addRoutes
+```

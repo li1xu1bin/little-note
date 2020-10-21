@@ -19,6 +19,7 @@
 * 504 Gateway Timeout 网关超时，没有及时从上游服务器收到请求
 
 ## 加载到渲染
+
 ### 从浏览器地址栏输入url到显示页面的步骤
 加载过程  
 1. 浏览器查找缓存
@@ -88,7 +89,6 @@ window.onscroll = throttle(showTop,1000)
 
 ## 性能优化
 
-
 1. 减少HTTP请求：压缩合并代码，图片压缩，合并sprite
 2. 减少DOM操作
 3. 静态资源缓存，Ajax缓存
@@ -110,9 +110,32 @@ window.onscroll = throttle(showTop,1000)
 浏览器第一次向一个web服务器发起http请求后，服务器会返回请求的资源，并且在响应头中添加一些有关缓存的字段如：Cache-Control、Expires（过期时间）、Last-Modified、ETag、Date等等。
 
 强缓存：浏览器直接从本地缓存中获取数据，不与服务器进行交互。  
-协商缓存：浏览器发送请求到服务器，服务器判定是否可使用本地缓存。
+控制字段有 Expires 和 Cache-Control  
+
+协商缓存：浏览器发送请求到服务器，服务器判定是否可使用本地缓存。  
+控制字段有 Etag / If-None-Match 和 Last-Modified / If-Modified-Since
 
 ## HTTP和HTTPS区别
 http：80端口  
 https：443端口，加多一层SSL协议  
 内容加密 验证身份 保证数据完整性
+
+## XSS 和 CSRF
+
+### XSS 跨站脚本攻击
+XSS：恶意攻击者往 Web 页面里插入恶意 Script 代码，当用户浏览该页之时，嵌入其中 Web 里面的 Script 代码会被执行，从而达到恶意攻击用户的目的。
+
+防范方法：
+1.HttpOnly 防止劫取 Cookie  
+2.用户的输入检查  
+3.服务端的输出检查  
+
+### CSRF 跨站请求伪造
+劫持受信任用户向服务器发送非预期请求的攻击方式。
+CSRF：攻击者借助受害者的 Cookie 骗取服务器的信任，可以在受害者毫不知情的情况下以受害者名义伪造请求发送给受攻击服务器，从而在并未授权的情况下执行在权限保护之下的操作。
+
+
+防范方法：
+1.验证码  
+2.Referer Check  
+3.Token 验证

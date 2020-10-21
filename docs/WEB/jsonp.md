@@ -43,9 +43,27 @@ send() 发送数据
 })();
 ```
 
-## CORS
+## CORS 跨域资源共享
 
 服务端设置 Access-Control-Allow-Origin 就可以开启 CORS
+
+浏览器将CORS请求分为两类：简单请求（simple request）和非简单请求（not-simple-request）。
+
+符合以下任一情况的就是复杂请求：
+
+1.使用方法put/delete/patch/post;
+
+2.发送json格式的数据（content-type: application/json）
+
+3.请求中带有自定义头部；
+
+Options请求出现的情况有两种，复杂请求触发预检请求
+
+1、获取后台服务器支持的HTTP的通信方式
+
+2、对跨域请求进行preflight request(预检请求)。
+
+预检请求首先需要向另外一个域名的资源发送一个Http Options的请求头，以检测实际发送的请求是否是安全的。options请求是浏览器自发起的preflight request(预检请求)。
 
 ## postMessage跨域
 

@@ -56,7 +56,7 @@ activated：keep-alive开启时调用
 deactivated：keep-alive关闭时调用 
 
 beforeDestroy：实例销毁之前调用。实例仍然完全可用，this仍能获取到实例  
-destroy：实例销毁后调用，调用后，Vue实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁
+destroyed：实例销毁后调用，调用后，Vue实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁
 
 ### vue父子组件的渲染顺序
 

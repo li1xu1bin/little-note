@@ -35,3 +35,22 @@ IndexedDB 有同源限制，每一个数据库只能在自身域名下能访问�
 支持事务型：IndexedDB 执行的操作会按照事务来分组的，在一个事务中，要么所有的操作都成功，要么所有的操作都失败  
 键值对存储：IndexedDB 内部采用对象仓库（object store）存放数据。所有类型的数据都可以直接存入，包括 JavaScript 对象。对象仓库中，数据以 “键值对” 的形式保存，每一个数据记录都有对应的主键，主键是独一无二的，不能有重复，否则会抛出一个错误  
 数据操作是异步的：使用 IndexedDB 执行的操作是异步执行的，以免阻塞应用程序
+
+## 综合方案 localForage
+localForage 是一个 JavaScript 库，提升了应用程序的离线体验，通过使用异步的数据存储，提供简单的类似 localStorage 的 API，允许开发者存储多种类型数据。
+
+localForage 有一个优雅降级策略，若浏览器不支持 IndexedDB 或 WebSQL，则使用 localStorage。
+
+[localForage文档](http://localforage.docschina.org/) 
+
+```js
+// 通过 localStorage 设置值
+localStorage.setItem('key', JSON.stringify('value'));
+doSomethingElse();
+
+// 通过 localForage 完成同样功能
+localforage.setItem('key', 'value').then(doSomethingElse);
+
+// localForage 同样支持回调函数
+localforage.setItem('key', 'value', doSomethingElse);
+```
