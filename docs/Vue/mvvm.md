@@ -288,3 +288,14 @@ mounted(){
 
 [vue组件间通信六种方式](https://www.jianshu.com/p/c015141441f4)
 
+### children/root
+
+通过给子组件定义 ref 属性可以使用 $refs 来直接操作子组件的方法和属性。
+``` 
+<child ref="list"></child>
+``` 
+
+比如子组件有一个 getList 方法，可以通过如下方式进行调用，实现父到子的通信：
+``` 
+this.$refs.list.getList()
+``` 

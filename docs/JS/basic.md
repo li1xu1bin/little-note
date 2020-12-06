@@ -52,13 +52,90 @@ console.log({} instanceof Object);                   // true
 ## 遍历数组
 
 1.for循环  
-2.forEach循环  
+  ```js
+var arr = [1,2,3]
+for(var i = 0; i < arr.length; i++){
+  console.log(arr[i])
+}
+  ```
+
+2.forEach循环
+  ```js
+var arr = [1,2,3]
+arr.forEach(function(item,index){
+	console.log(item)
+	console.log(index)
+})
+  ```
+
 3.for of循环  
+  ```js
+var arr = [1,2,3]
+for(var key of arr){
+	console.log(key)
+}
+  ```
+
 4.map循环 返回处理后的数组 不改变原数组  
-5.filter循环 返回符合条件的所有元素的值 不改变原数组  
-6.reduce累加  
-7.find 返回符合条件的第一个元素的值，无则返回undefined 不改变原数组  
-8.findIndex 返回符合条件的第一个元素位置，无则返回-1 不改变原数组 
+  ```js
+var arr = [
+  { name:'sun' },
+  { name:'moon' },
+  { name:'star' }
+]
+// 返回值
+var newArr = arr.map((item,index) =>{
+	return item.name
+})
+console.log(newArr)
+// ["sun", "moon", "star"]
+
+// 新增属性
+var newArr = arr.map((item,index) =>({
+	name: item.name,
+	num: item.name + index
+}))
+console.log(newArr)
+  // [
+  // { name: "sun", num: "sun0"},
+  // { name: "moon", num: "moon1"},
+  // { name: "star", num: "star2"},
+  // ]
+  ```
+
+5.filter循环 返回符合条件的所有元素的值 不改变原数组
+  ```js
+var arr = [
+  { name:'sun', light:true },
+  { name:'moon', light:false },
+  { name:'star', light:true }
+]
+// 返回值
+var newArr = arr.filter((item,index) =>{
+	return item.light
+})
+console.log(newArr)
+  // [
+  // { name:'sun', light:true },
+  // { name:'star', light:true }
+  // ]
+  ```  
+
+6.find 返回符合条件的第一个元素的值，无则返回undefined 不改变原数组  
+7.findIndex 返回符合条件的第一个元素位置，无则返回-1 不改变原数组 
+  ```js
+var arr = [1,2,3]
+
+var num = arr.find((item,index) =>{
+	return item === 3;
+})
+var order = arr.findIndex((item,index) =>{
+	return item === 3;
+})
+console.log(num) //3
+console.log(order) //2
+  ```  
+8.reduce累加  
 
 ## 操作数组
 
@@ -72,6 +149,18 @@ sort()排序
 reverse()反转顺序
 
 slice(起始位置，结束位置) 返回一个新数组
+  ```js
+arr.slice(0);//返回一个新数组
+
+var num = '12345';
+console.log(num.slice(1))//2345
+console.log(num.slice(1,3))//23
+
+var arr = ['a','b','c','d'];
+console.log(arr.slice(1))//["b", "c", "d"] 删除第一项
+console.log(arr.slice(1,3))//["b", "c"]
+console.log(arr.slice(0,-1))//['a', "b", "c"] 删除最后一项
+  ``` 
 
 splice(index，len，item) 改变原数组
 
@@ -80,12 +169,7 @@ len: 替换/删除的长度
 item:替换的值，删除操作的话 item为空
 
 ```js
-var num = '12345';
-var arr = ['a','b','c','d'];
-console.log(num.slice(1))//2345
-console.log(num.slice(1,3))//23
-console.log(arr.slice(1))//["b", "c", "d"]
-console.log(arr.slice(1,3))//["b", "c"]
+
 
 var arr = ['a','b','c','d'];
 arr.splice(-1,1) 

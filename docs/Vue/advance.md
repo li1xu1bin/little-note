@@ -146,3 +146,92 @@ export default {
   </div>
 </template>
 ```
+
+## 混入mixins
+
+```
+import { statMixin } from '../common/mixins'
+export default {
+    mixins: [statMixin]
+}
+```
+
+data 将进行递归合并，对于键名冲突的以组件数据为准：
+
+```js
+// mixinA 的 data
+data() {
+    obj: {
+        name: 'bubuzou',
+    },
+}
+
+// component A
+export default {
+    mixins: [mixinA],
+    data(){
+        obj: {
+            name: 'hello',
+            age: 21
+        },
+    },
+    mounted() {
+        console.log( this.obj )  // { name: 'bubuzou', 'age': 21 }    
+    }
+}
+```
+
+对于生命周期钩子函数将会合并成一个数组，混入对象的钩子将先被执行：
+```js
+// mixin A
+const mixinA = {
+    created() {
+        console.log( '第一个执行' )
+    }
+}
+
+// mixin B
+const mixinB = {
+    mixins: [mixinA]
+    created() {
+        console.log( '第二个执行' )
+    }
+}
+
+// component A
+export default {
+    mixins: [mixinB]
+    created() {
+        console.log( '最后一个执行' )
+    }
+}
+```
+
+## 自定义指令
+```js
+<button v-auth="['user']">提交</button>
+
+// auth.js
+const AUTH_LIST = ['admin']
+
+function checkAuth(auths) {
+    return AUTH_LIST.some(item => auths.includes(item))
+}
+
+function install(Vue, options = {}) {
+    Vue.directive('auth', {
+        inserted(el, binding) {
+            if (!checkAuth(binding.value)) {
+                el.parentNode && el.parentNode.removeChild(el)
+            }
+        }
+    })
+}
+
+export default { install }
+
+
+import Auth from './utils/auth'
+Vue.use(Auth)
+
+```
