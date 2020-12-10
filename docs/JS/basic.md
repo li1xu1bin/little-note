@@ -135,7 +135,10 @@ var order = arr.findIndex((item,index) =>{
 console.log(num) //3
 console.log(order) //2
   ```  
-8.reduce累加  
+8.indexOf() 返回某个指定的字符串值在字符串中首次出现的位置  
+9.lastIndexOf() 返回一个指定的字符串值最后出现的位置
+
+10.reduce累加  
 
 ## 操作数组
 

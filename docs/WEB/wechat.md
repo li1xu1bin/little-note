@@ -117,3 +117,46 @@ wx.chooseWXPay({
 })
 
 ```
+
+## Uniapp
+
+### 生命周期
+应用生命周期 onLaunch onShow onHide onError  
+页面生命周期 onLoad onShow onReady onHide onUnload 
+onPullDownRefresh（下拉刷新） onReachBottom（触底） onPageScroll（页面滚动）  
+组件生命周期 与vue标准组件的生命周期相同
+
+### 页面通讯
+uni.$emit 触发全局的自定事件  
+uni.$on 监听全局的自定义事件  
+uni.$once 监听全局的自定义事件,只触发一次，在第一次触发之后移除监听器  
+uni.$off 移除全局自定义事件监听器
+
+```
+  uni.$emit('update',{msg:'页面更新'})
+
+  uni.$on('update',function(data){
+    console.log('监听到事件来自 update ，携带参数 msg 为：' + data.msg);
+  })
+```
+
+### 条件编译
+
+```
+// #ifdef  %PLATFORM%
+平台特有的API实现
+// #endif
+
+<!--  #ifdef  %PLATFORM% -->
+平台特有的组件
+<!--  #endif -->
+
+/*  #ifdef  %PLATFORM%  */
+平台特有样式
+/*  #endif  */
+```
+### pages.json
+
+subPackages 分包加载配置  
+preloadRule 分包预载配置
+

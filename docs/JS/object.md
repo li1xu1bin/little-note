@@ -114,7 +114,44 @@ for (var i = 1; i <= 10; i++) {
 
 
 
-## 作用域和闭包
+## 作用域
+
+```js
+var zxx = 'zxx is a girl'
+var zxxs = 'yes'
+function zxxFn () {
+    console.log('111',zxx) // undefined
+    console.log('222',zxxs) //yes
+    zxx = 'very good'
+    zxxs = 'not'
+    console.log('333',zxx) // very good
+    console.log('444',zxxs) // not
+    var zxx = 'zxx is a great girl' //相当于 var zxx和xxx=''，变量提升
+    console.log('555',zxx) // zxx is a great girl'
+    console.log('666',zxxs) // not
+}
+console.log('777',zxx) // zxx is a girl
+console.log('888',zxxs) // yes
+zxxFn()
+console.log('999',zxx) // zxx is a girl
+console.log('000',zxxs) //not
+```
+
+### 变量提升
+```js
+  var a = 10;
+  function aaa() {
+      console.log(a);
+      var a = 20; //变量提升
+      
+  }
+  aaa();//undefined
+
+  // 相当于
+  var a; //声明提前了
+  alert(a);
+  a=20; //赋值扔留着原地
+```
 
 #### 题目：现在有个 HTML 片段，要求编写代码，点击编号为几的链接就alert弹出其编号
   

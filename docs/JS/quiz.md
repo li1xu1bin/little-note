@@ -1,6 +1,29 @@
 
 # JS常见笔试题
 
+## 数组去重
+
+  ```js
+  var arr = [1,2,2,3,3,true,false,false]
+  function uni(arr){
+    return Array.from(new Set(arr))
+  }
+  console.log(uni(arr))
+
+  [...new Set(arr)]
+  ```
+
+  ```js
+  var arr = [1,2,2,3,3,true,false,false]
+  function uni(arr){
+    return arr.filter(function(item,index){
+      // 第一个索引=当前索引值，返回
+      return arr.indexOf(item,0) === index
+    })
+  }
+  console.log(uni(arr))
+  ```
+
 ## JS 实现一个闭包函数,每次调用都自增1
 
   ```js
