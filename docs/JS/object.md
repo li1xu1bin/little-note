@@ -1,13 +1,60 @@
+## 函数
+声明式函数会导致函数提升，会被解释器优先编译，即可以在任何区域声明，不影响调用  
+表达式函数 需要顺序正确
+```js
+
+a(); //hello world
+b(); //Uncaught TypeError
+
+// 函数声明式
+function a(){
+      console.log("hello world");  
+}
+
+// 函数表达式
+var b = function(){
+    console.log("hello world"); 
+}
+
+// 立即执行函数
+(function(a){
+	console.log(a)
+})(123) //123
+
+
+var a = 123;
+
+(function(){
+	var b = 321;
+	console.log(a)//123
+})()
+console.log(b) //Uncaught ReferenceError
+
+
+```
+
 ## 闭包
 
 闭包是定义在函数里的函数，  
 闭包能够读取其他函数内部变量  
 优点：变量的值始终保持在内存中，不用担心命名冲突
-
+作用：让外部访问函数内部变量
 
 函数执行，形成一个私有的作用域，保护里边的私有变量不受外界的干扰，除了保护私有变量外，还可以保存一些内容，这样的模式叫做闭包。
 
+读取函数内部变量
+```js
+function funA(){
+  var a = 10; 
+  return function(){   //匿名函数的活动对象;
+    alert(a);
+  }
+}
+var b = funA();
+b();  //10
+```
 
+常驻内存
 ```js
 function a() {
 	var num = 1

@@ -220,6 +220,7 @@ function checkAuth(auths) {
 
 function install(Vue, options = {}) {
     Vue.directive('auth', {
+      // inserted：被绑定元素插入父节点时调用 (仅保证父节点存在，但不一定已被插入文档中)。
         inserted(el, binding) {
             if (!checkAuth(binding.value)) {
                 el.parentNode && el.parentNode.removeChild(el)
@@ -233,5 +234,42 @@ export default { install }
 
 import Auth from './utils/auth'
 Vue.use(Auth)
+
+```
+
+## 自定义插件
+
+为 Vue 添加全局功能，一般是添加全局方法/全局指令/过滤器等  
+通过 install 方法给 Vue 添加全局功能  
+通过全局方法 Vue.use() 使用插件  
+
+```js
+//所谓vue的插件，就是一个js对象
+let myplugin={
+    install:function(Vue,Options){
+        // 添加属性与方法
+        //这里我写的$testProp等加了$符号的，表示他为vue全局的，但实际上不加也可以的，访问时也不加就行了
+        Vue.prototype.$myoption='我是来自插件的属性',
+        Vue.prototype.$myfn=function(){
+            console.log('我是来自插件的方法')
+        }
+        // 添加全局混入
+        Vue.mixin({
+            mounted() {
+                console.log('组件创建成功')
+            },
+        })
+        // 添加全局指令
+        Vue.directive('dir',{
+            inserted:function(ele){
+                ele.style.border='2px solid green'
+            }
+        })
+    }
+}
+export default myplugin;
+
+import myplugin from 'js'
+Vue.use(myplugin)
 
 ```

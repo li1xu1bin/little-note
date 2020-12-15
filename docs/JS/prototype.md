@@ -7,7 +7,7 @@
   function Person() {
   }
   var person = new Person();
-
+  // 实例.proto === 构造函数.prototype
   console.log(person.__proto__ === Person.prototype); // true
   console.log(Person.prototype.__proto__ === Object.prototype); // true
   console.log(Object.prototype.__proto__ === null); // true
