@@ -63,7 +63,8 @@ store.getters.doneTodos // -> [{ id: 1, text: '...', done: true }]
 
 
 ## Mutation
-更改 Vuex 的 store 中的状态的唯一方法是提交 mutation，相当于事件
+更改 Vuex 的 store 中的状态的唯一方法是提交 mutation，相当于事件  
+传参通过载荷（payload），通常是个对象
 
 ```js
 mutations: {
@@ -88,10 +89,10 @@ store.commit({
 
 ## Action
 
-Action 类似于 mutation，不同在于：
-
-Action 提交的是 mutation，而不是直接变更状态。
+Action 类似于 mutation，不同在于：  
+Action 提交的是 mutation，而不是直接变更状态。  
 Action 可以包含任意异步操作。
+
 ```js
 const store = new Vuex.Store({
   state: {
@@ -108,6 +109,11 @@ const store = new Vuex.Store({
     }
   }
 })
+```
+
+Action 通过 store.dispatch 方法触发
+```js
+store.dispatch('increment')
 ```
 
 ## Module
@@ -135,3 +141,6 @@ const store = new Vuex.Store({
 store.state.a // -> moduleA 的状态
 store.state.b // -> moduleB 的状态
 ```
+
+
+## 辅助函数

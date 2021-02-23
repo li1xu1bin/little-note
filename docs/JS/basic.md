@@ -140,6 +140,25 @@ console.log(order) //2
 
 10.reduce累加  
 
+ ```js
+var arr = [1, 2, 3, 4];
+var sum = arr.reduce(function(prev, cur, index, arr) {
+    console.log(prev, cur, index);
+    return prev + cur;
+}，0)
+console.log(arr, sum);
+
+var arr = [1, 2, 3, 4];
+var sum = arr.reduce((x,y)=>x+y)
+var mul = arr.reduce((x,y)=>x*y)
+console.log( sum ); //求和，10
+console.log( mul ); //求乘积，24
+  ```  
+
+[reduce高级技巧](https://www.jianshu.com/p/e375ba1cfc47 ) 
+
+
+
 ## 操作数组
 
 push()添加最后一项  
