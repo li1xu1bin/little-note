@@ -168,3 +168,30 @@ left设置负边距为100%，right设置负边距为自身宽度
 
 
 [让CSS flex布局最后一行列表左对齐的N种方法](https://www.zhangxinxu.com/wordpress/2019/08/css-flex-last-align/)  
+
+
+## Flex布局
+flex: 1 = 0 1 auto  
+flex: flex-grow flex-shrink flex-basis   
+flex: 扩展 收缩 项目长度  
+元素宽度等于 扩展值+项目长度
+```css
+  .container {
+    width: 600px;
+    height: 300px;
+    display: flex;
+  }
+  .left {
+    flex: 1 2 300px;
+    background: red;
+  }
+  .right {
+    flex: 2 1 200px;
+    background: blue;
+  }
+```
+剩余的空间：600 - (300 + 200) = 100。  
+子元素的 flex-grow 的值分别为 1，2， 剩余空间用3等分来分  
+100 / 3 = 33.3333333  
+所以 left = 300 + 1 * 33.33 = 333.33  
+right = 200 + 2 * 33.33 = 266.67  

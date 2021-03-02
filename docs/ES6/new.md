@@ -140,7 +140,7 @@ var Text = React.Text;
 var View = React.Text;
     ```
 	
-## 类class
+##  类class
 
 class 其实一直是 JS 的关键字（保留字），但是一直没有正式使用，直到 ES6 。 ES6 的 class 就是取代之前构造函数初始化对象的形式，从语法上更加符合面向对象的写法。例如：  
 
@@ -176,16 +176,48 @@ const m = new MathHandle(1, 2);
 console.log(m.add())
 
   ```
-  
-注意以下几点，全都是关于 class 语法的：
+### 特性
+1.class 声明会提升，但不会初始化赋值。Foo 进入暂时性死区，类似于 let、const 声明变量
+```js
+const bar = new Bar(); // it's ok
+function Bar() {
+  this.bar = 42;
+}
+
+const foo = new Foo(); // ReferenceError: Foo is not defined
+class Foo {
+  constructor() {
+    this.foo = 42;
+  }
+}
+```
 
 
-    1、class 是一种新的语法形式，是class Name {...}这种形式，和函数的写法完全不一样
-    2、两者对比，构造函数函数体的内容要放在 class 中的constructor函数中，constructor即构造器，初始化实例时默认执行
-    3、class 中函数的写法是add() {...}这种形式，并没有function关键字
+2.class 声明内部会启用严格模式  
 
-	
-使用 class 来实现继承就更加简单了，至少比构造函数实现继承简单很多。看下面例子  
+```js
+// 引用一个未声明的变量
+function Bar() {
+  baz = 42; // it's ok
+}
+const bar = new Bar();
+
+class Foo {
+  constructor() {
+    fol = 42; // ReferenceError: fol is not defined
+  }
+}
+const foo = new Foo();
+```
+
+3.class 的所有方法（包括静态方法和实例方法）都是不可枚举的
+```  
+Object.keys(Foo); // []
+```
+4.class 的所有方法（包括静态方法和实例方法）都没有原型对象 prototype，所以也没有[[construct]]，不能使用 new 来调用。
+```
+const fooPrint = new foo.print(); // TypeError: foo.print is not a constructor
+```
 JS 构造函数实现继承  
   ```js
 // 动物

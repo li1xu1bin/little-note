@@ -35,7 +35,11 @@ vue响应式原理：Object.defineProperty 将data转为getter/setter
 
 MVC中Controller演变成MVVM中的ViewModel  
 MVVM通过数据来显示视图层而不是节点操作  
-MVVM主要解决了MVC中大量的dom操作使页面渲染性能降低,加载速度变慢,影响用户体验
+MVVM主要解决了MVC中大量的dom操作使页面渲染性能降低,加载速度变慢,影响用户体验  
+操作DOM对象时，会触发浏览器的布局（layout) 和 绘制（paint) 行为，引发重绘  
+
+### 真实DOM到虚拟DOM
+将模板转换成 ast 树，ast 树生成代码
 
 
 ## 生命周期 
@@ -55,7 +59,7 @@ updated：虚拟DOM重新渲染和打补丁之后调用，组件DOM已经更新�
 activated：keep-alive开启时调用  
 deactivated：keep-alive关闭时调用 
 
-beforeDestroy：实例销毁之前调用。实例仍然完全可用，this仍能获取到实例  
+beforeDestroy：实例销毁之前调用。实例仍然完全可用，this仍能获取到实例  解绑实践，清除定时器
 destroyed：实例销毁后调用，调用后，Vue实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁
 
 ### vue父子组件的渲染顺序
