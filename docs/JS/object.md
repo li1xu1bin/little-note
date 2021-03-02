@@ -80,7 +80,52 @@ for (var i = 1; i <= 10; i++) {
 ```
 [JavaScript 闭包](https://my.oschina.net/u/3693769/blog/1544436) 
 
+## this
 
+### this指向
+this 永远指向最后调用它的那个对象  
+
+```js
+var name = "windowsName";
+function a() {
+ var name = "Cherry";
+ console.log(this.name);   // windowsName
+ console.log("inner:" + this); // inner: Window
+}
+a();
+console.log("outer:" + this)   // outer: Window
+```
+最后的a()相当于window.a()
+
+```js
+var name = "windowsName";
+ var a = {
+  name: "Cherry",
+  fn : function () {
+   console.log(this.name);  // Cherry
+  }
+ }
+ a.fn();
+```
+函数 fn 是对象 a 调用的
+
+### 改变this指向
+myFun.call(db,'xx','xx')； 调用参数  
+  myFun.apply(db,['xx','xx']);  调用数组    
+myFun.bind(db,'xx','xx')();  创建函数，手动调用  
+
+```js
+var a ={
+  name : "Cherry",
+  fn : function (a,b) {
+   console.log( a + b)
+  }
+ }
+ var b = a.fn;
+ b.call(a,1,2)  // 3
+ b.apply(a,[1,2])  // 3
+ b.bind(a,1,2)()   // 3
+```
 
 ## 深浅拷贝
 ### 深拷贝
