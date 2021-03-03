@@ -303,3 +303,11 @@ mounted(){
 ``` 
 this.$refs.list.getList()
 ``` 
+
+
+## 框架对比
+Vue：渐进式 JavaScript 框架、核心库加插件、动态创建用户界面，体积小运行快，关注UI层面，可以扩展  
+Angular：自带丰富的指令，完整的框架，依赖注入（按需引入），较复杂庞大  
+React：用JSX渲染，虚拟dom，单向数据流，用js渲染html，css
+
+Vue借鉴了angular的模板和数据绑定，借鉴了react的组件化和虚拟dom

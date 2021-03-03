@@ -27,6 +27,7 @@
   * [Vuex](Vue/vuex.md)
   * [进阶](Vue/advance.md)
   * [技巧](Vue/snippet.md)
+  * [Vue3](Vue/vue3.md)
 
 * React
   * [基础知识](React/hooks.md)
