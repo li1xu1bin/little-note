@@ -38,6 +38,18 @@ MVVM通过数据来显示视图层而不是节点操作
 MVVM主要解决了MVC中大量的dom操作使页面渲染性能降低,加载速度变慢,影响用户体验  
 操作DOM对象时，会触发浏览器的布局（layout) 和 绘制（paint) 行为，引发重绘  
 
+### 响应式数据变动
+改变对象用
+```js
+this.$set(this.someObject,'b',2)
+```
+
+改变数组用
+```js
+Vue.set(vm.items, indexOfItem, newValue) //indexOfItem索引
+vm.items.splice(indexOfItem, 1, newValue)
+```
+
 ### 真实DOM到虚拟DOM
 将模板转换成 ast 树，ast 树生成代码
 

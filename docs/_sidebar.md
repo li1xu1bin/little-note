@@ -30,7 +30,8 @@
   * [Vue3](Vue/vue3.md)
 
 * React
-  * [基础知识](React/hooks.md)
+  * [基础知识](React/basic.md)
+  * [React Hook](React/hooks.md)
 
 * Web相关
   * [HTTP](WEB/http.md)

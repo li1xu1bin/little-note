@@ -1,4 +1,4 @@
-## React Hooks
+## useState
 
 一个简单的有状态组件
 ```js
@@ -43,7 +43,44 @@ function Example() {
 ```js
 const [count, setCount] = useState(0);
 ```
-声明了一个状态变量count，把它的初始值设为0，同时提供了一个可以更改count的函数setCount。
+声明了一个状态变量count，把它的初始值设为0，同时提供了一个可以更改count的函数setCount。  
+React Hooks 的意思是，组件尽量写成纯函数，如果需要外部功能和副作用，就用钩子把外部代码"钩"进来
+
+## useEffect
+```js
+import React, { useState, useEffect } from 'react';
+
+function Example() {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    document.title = `You clicked ${count} times`;
+  });
+
+  return (
+    <div>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+    </div>
+  );
+}
+```
+
+清除副作用
+```js
+ useEffect(() => {
+    function handleStatusChange(status) {
+      setIsOnline(status.isOnline);
+    }
+
+    ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
+    return () => {
+      ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
+    };
+  });
+```
 
 ### react native
 
@@ -59,12 +96,4 @@ SectionList渲染的是一组需要分组的数据，也许还带有分组标签
 
 使用 Fetch 请求数据
 
-
-## react
-
-Props（属性）
-State（状态）
-
-在子类的`constructor()`中必须先调用`super()`才能引用`this`
-在子类的`constructor()`中调用`super(props)`，可以使用`this.props`
 
